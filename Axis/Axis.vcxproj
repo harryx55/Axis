@@ -141,6 +141,10 @@
     <ClInclude Include="src\Axis\Application.h" />
     <ClInclude Include="src\Axis\Core.h" />
     <ClInclude Include="src\Axis\EntryPoint.h" />
+    <ClInclude Include="src\Axis\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\Axis\Events\Events.h" />
+    <ClInclude Include="src\Axis\Events\KeyEvent.h" />
+    <ClInclude Include="src\Axis\Events\MouseEvent.h" />
     <ClInclude Include="src\Axis\Log.h" />
   </ItemGroup>
   <ItemGroup>

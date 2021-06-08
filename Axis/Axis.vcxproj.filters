@@ -19,6 +19,10 @@
     <ClInclude Include="src\Axis\Log.h">
       <Filter>Axis</Filter>
     </ClInclude>
+    <ClInclude Include="src\Axis\Events\MouseEvent.h" />
+    <ClInclude Include="src\Axis\Events\KeyEvent.h" />
+    <ClInclude Include="src\Axis\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\Axis\Events\Events.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Axis\Application.cpp">
