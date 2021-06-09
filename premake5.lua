@@ -18,6 +18,9 @@ project "Axis"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-intermediate/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "pch.h"
+	pchsource "Axis/src/pch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",

@@ -4,6 +4,9 @@
     <Filter Include="Axis">
       <UniqueIdentifier>{9AC0827C-86F7-830D-2FE4-69101BFAFF0E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Axis\Events">
+      <UniqueIdentifier>{3E7BFA60-AA30-7356-3325-6D2D9FD9695A}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Axis.h" />
@@ -16,13 +19,22 @@
     <ClInclude Include="src\Axis\EntryPoint.h">
       <Filter>Axis</Filter>
     </ClInclude>
+    <ClInclude Include="src\Axis\Events\ApplicationEvent.h">
+      <Filter>Axis\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Axis\Events\Events.h">
+      <Filter>Axis\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Axis\Events\KeyEvent.h">
+      <Filter>Axis\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Axis\Events\MouseEvent.h">
+      <Filter>Axis\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Axis\Log.h">
       <Filter>Axis</Filter>
     </ClInclude>
-    <ClInclude Include="src\Axis\Events\MouseEvent.h" />
-    <ClInclude Include="src\Axis\Events\KeyEvent.h" />
-    <ClInclude Include="src\Axis\Events\ApplicationEvent.h" />
-    <ClInclude Include="src\Axis\Events\Events.h" />
+    <ClInclude Include="src\pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Axis\Application.cpp">
@@ -31,5 +43,6 @@
     <ClCompile Include="src\Axis\Log.cpp">
       <Filter>Axis</Filter>
     </ClCompile>
+    <ClCompile Include="src\pch.cpp" />
   </ItemGroup>
 </Project>
