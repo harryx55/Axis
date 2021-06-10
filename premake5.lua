@@ -10,6 +10,12 @@ workspace "Axis"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir ["GLFW"] = "Axis/vendor/GLFW/include"
+
+include "Axis/vendor/GLFW"
+
 project "Axis"
 	location "Axis"
 	kind "sharedlib"
@@ -38,7 +44,15 @@ project "Axis"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/src/Axis",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+
+		"%{IncludeDir.GLFW}"
+	}
+
+	links 
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 

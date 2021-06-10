@@ -7,6 +7,12 @@
     <Filter Include="Axis\Events">
       <UniqueIdentifier>{3E7BFA60-AA30-7356-3325-6D2D9FD9695A}</UniqueIdentifier>
     </Filter>
+    <Filter Include="platform">
+      <UniqueIdentifier>{4A63C33C-3630-1E48-5F49-0CF04B7553D6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="platform\windows">
+      <UniqueIdentifier>{A44FC440-9048-E392-B97A-C817A5D2C29E}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Axis.h" />
@@ -34,7 +40,13 @@
     <ClInclude Include="src\Axis\Log.h">
       <Filter>Axis</Filter>
     </ClInclude>
+    <ClInclude Include="src\Axis\Window.h">
+      <Filter>Axis</Filter>
+    </ClInclude>
     <ClInclude Include="src\pch.h" />
+    <ClInclude Include="src\platform\windows\WindowsWindow.h">
+      <Filter>platform\windows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Axis\Application.cpp">
@@ -44,5 +56,8 @@
       <Filter>Axis</Filter>
     </ClCompile>
     <ClCompile Include="src\pch.cpp" />
+    <ClCompile Include="src\platform\windows\WindowsWindow.cpp">
+      <Filter>platform\windows</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
