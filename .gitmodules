@@ -1,0 +1,3 @@
+[submodule "Axis/vendor/GLFW"]
+	path = Axis/vendor/GLFW
+	url = https://github.com/TheCherno/glfw
