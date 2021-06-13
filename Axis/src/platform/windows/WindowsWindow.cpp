@@ -10,6 +10,7 @@ namespace Axis
 	static bool sGLFW_INIT = false;
 
 	WindowsWindow::WindowsWindow(const WindowProps& props)
+		: m_window(NULL)
 	{
 		Init(props);
 	}
@@ -34,7 +35,7 @@ namespace Axis
 		if (!sGLFW_INIT)
 		{
 			int status = glfwInit();
-			// ASSERT: AX_CORE_ERROR(status, "[ERROR]: GLFW not Initialized");
+			// Assert: AX_CORE_ERROR(status, "[ERROR]: GLFW not Initialized");
 
 			sGLFW_INIT = true;
 		}
@@ -43,6 +44,12 @@ namespace Axis
 		glfwMakeContextCurrent(m_window);
 		glfwSetWindowUserPointer(m_window, &m_data);
 		SetVSync(true);
+	}
+
+	void WindowsWindow::onUpdate()
+	{
+		glfwPollEvents();
+		// TODO: fix glfwSwapBuffers(m_window) error
 	}
 
 	void WindowsWindow::ShutDown()

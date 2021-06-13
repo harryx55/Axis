@@ -1,5 +1,5 @@
 workspace "Axis"
-	  architecture "x64"
+	 architecture "x64"
 
 	  configurations
 	  {
@@ -40,13 +40,25 @@ project "Axis"
 		"%{prj.name}/src/Axis/**.cpp"
 	}
 
+	buildoptions
+	{
+		"/MD"
+	}
+
+	linkoptions
+	{
+		"/INCREMENTAL"
+	}
+
+
 	includedirs
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/src/Axis",
 		"%{prj.name}/vendor/spdlog/include",
 
-		"%{IncludeDir.GLFW}"
+		"{IncludeDir.GLFW}",
+		"%{prj.name}/vendor/GLFW/include"
 	}
 
 	links 
@@ -106,7 +118,9 @@ project "Sandbox"
 	{
 		"Axis/src",
 		"Axis/src/Axis",
-		"Axis/vendor/spdlog/include"
+		"Axis/vendor/spdlog/include",
+
+		"Axis/vendor/GLFW/include"
 	}
 
 
