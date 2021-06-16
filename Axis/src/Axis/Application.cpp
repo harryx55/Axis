@@ -6,20 +6,19 @@ namespace Axis {
 
 	Application::Application()
 	{
-		m_Window = (WindowsWindow*)malloc(sizeof(WindowsWindow));
-		m_Window->Create(props);
+		MainWindow = new WindowsWindow(props);
 	}
 
 	Application::~Application()
 	{
-		delete m_Window;
+		delete MainWindow;
 	}
 
 	void Application::Run()
 	{
 		while (running)
 		{
-			m_Window->onUpdate();
+			MainWindow->onUpdate();
 		}
 	}
 }

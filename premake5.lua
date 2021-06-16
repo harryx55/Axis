@@ -42,7 +42,7 @@ project "Axis"
 
 	buildoptions
 	{
-		"/MD"
+		"/MDd"
 	}
 
 	linkoptions
@@ -77,6 +77,7 @@ project "Axis"
 		{
 			"AXIS_BUILD_DLL",
 			"AXIS_PLATFORM_WINDOWS",
+			"AXIS_ENABLE_ASSERT",
 			"_WINDLL"
 		}
 
@@ -131,7 +132,8 @@ project "Sandbox"
 
 		defines
 		{
-			"AXIS_PLATFORM_WINDOWS"
+			"AXIS_PLATFORM_WINDOWS",
+			"AXIS_ENABLE_ASSERT"
 		}
 
 		links

@@ -8,5 +8,14 @@
 		#define AXIS_API __declspec(dllimport)
 	#endif
 #else
-	#error Axis is only supported on windows
+	#error Axis does not support platform
 #endif
+
+#ifdef AX_ENABLE_ASSERT
+	#define AX_ASSERT(x, ...) { if(!(x)) { AX_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define AX_CORE_ASSERT(x, ...) { if(!(x)) { AX_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#else
+	#define AX_ASSERT(x, ...)
+	#define AX_CORE_ASSERT(x, ...)
+#endif
+

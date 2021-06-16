@@ -1,12 +1,7 @@
 #pragma once
-
 #include "pch.h"
-
-
 #include "Window.h"
 #include "GLFW/glfw3.h"
-
-
 
 namespace Axis
 {
@@ -16,13 +11,11 @@ namespace Axis
 		WindowsWindow(const WindowProps&);
 		~WindowsWindow();
 
-		WindowsWindow* Create(const WindowProps&);
 		void onUpdate();
 		void SetVSync(bool enabled);
 
-
-		_Always_((aways_line)) unsigned int GetWidth()  const { return m_data.width; }
-		_Always_((aways_line)) unsigned int GetHeight() const { return m_data.height; }
+		unsigned int GetWidth()  const { return m_data.width; }
+		unsigned int GetHeight() const { return m_data.height; }
 
 	private:
 		void Init(const WindowProps&);
