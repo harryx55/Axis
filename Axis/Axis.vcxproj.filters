@@ -37,6 +37,12 @@
     <ClInclude Include="src\Axis\Events\MouseEvent.h">
       <Filter>Axis\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Axis\Layer.h">
+      <Filter>Axis</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Axis\LayerStack.h">
+      <Filter>Axis</Filter>
+    </ClInclude>
     <ClInclude Include="src\Axis\Log.h">
       <Filter>Axis</Filter>
     </ClInclude>
@@ -50,6 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Axis\Application.cpp">
+      <Filter>Axis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Axis\LayerStack.cpp">
       <Filter>Axis</Filter>
     </ClCompile>
     <ClCompile Include="src\Axis\Log.cpp">

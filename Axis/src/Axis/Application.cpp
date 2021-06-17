@@ -16,7 +16,7 @@ namespace Axis {
 
 	void Application::Run()
 	{
-		while (running)
+		while (!glfwWindowShouldClose(MainWindow->GetWindow()))
 		{
 			MainWindow->onUpdate();
 		}

@@ -79,8 +79,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>AXIS_BUILD_DLL;AXIS_PLATFORM_WINDOWS;_WINDLL;AX_ENABLE_ASSERT;AX_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;src\Axis;vendor\spdlog\include;..\{IncludeDir.GLFW};vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>AXIS_BUILD_DLL;AXIS_PLATFORM_WINDOWS;AXIS_ENABLE_ASSERT;_WINDLL;AX_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;src\Axis;vendor\spdlog\include;..\{IncludeDir.GLFW};..\{IncludeDir.Glad};vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -103,11 +103,11 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>AXIS_BUILD_DLL;AXIS_PLATFORM_WINDOWS;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;src\Axis;vendor\spdlog\include;..\{IncludeDir.GLFW};vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>AXIS_BUILD_DLL;AXIS_PLATFORM_WINDOWS;AXIS_ENABLE_ASSERT;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;src\Axis;vendor\spdlog\include;..\{IncludeDir.GLFW};..\{IncludeDir.Glad};vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -125,15 +125,15 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>AXIS_BUILD_DLL;AXIS_PLATFORM_WINDOWS;_WINDLL;AX_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;src\Axis;vendor\spdlog\include;..\{IncludeDir.GLFW};vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>AXIS_BUILD_DLL;AXIS_PLATFORM_WINDOWS;AXIS_ENABLE_ASSERT;_WINDLL;AX_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;src\Axis;vendor\spdlog\include;..\{IncludeDir.GLFW};..\{IncludeDir.Glad};vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -157,6 +157,8 @@
     <ClInclude Include="src\Axis\Events\Events.h" />
     <ClInclude Include="src\Axis\Events\KeyEvent.h" />
     <ClInclude Include="src\Axis\Events\MouseEvent.h" />
+    <ClInclude Include="src\Axis\Layer.h" />
+    <ClInclude Include="src\Axis\LayerStack.h" />
     <ClInclude Include="src\Axis\Log.h" />
     <ClInclude Include="src\Axis\Window.h" />
     <ClInclude Include="src\pch.h" />
@@ -164,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Axis\Application.cpp" />
+    <ClCompile Include="src\Axis\LayerStack.cpp" />
     <ClCompile Include="src\Axis\Log.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
@@ -173,6 +176,9 @@
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
       <Project>{154B857C-0182-860D-AA6E-6C109684020F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\Glad\GLAD.vcxproj">
+      <Project>{5D4A857C-4981-860D-F26D-6C10DE83020F}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

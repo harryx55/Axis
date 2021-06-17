@@ -10,11 +10,12 @@ workspace "Axis"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
--- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir ["GLFW"] = "Axis/vendor/GLFW/include"
+IncludeDir ["Glad"] = "Axis/vendor/GLAD/include"
 
 include "Axis/vendor/GLFW"
+include "Axis/vendor/Glad"
 
 project "Axis"
 	location "Axis"
@@ -58,12 +59,14 @@ project "Axis"
 		"%{prj.name}/vendor/spdlog/include",
 
 		"{IncludeDir.GLFW}",
+		"{IncludeDir.Glad}",
 		"%{prj.name}/vendor/GLFW/include"
 	}
 
 	links 
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -77,6 +80,7 @@ project "Axis"
 		{
 			"AXIS_BUILD_DLL",
 			"AXIS_PLATFORM_WINDOWS",
+			"GLFW_INCLUDE_NONE",
 			"AXIS_ENABLE_ASSERT",
 			"_WINDLL"
 		}

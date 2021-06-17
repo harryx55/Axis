@@ -16,6 +16,7 @@ namespace Axis
 
 		unsigned int GetWidth()  const { return m_data.width; }
 		unsigned int GetHeight() const { return m_data.height; }
+		GLFWwindow* GetWindow() const { return m_window; }
 
 	private:
 		void Init(const WindowProps&);
