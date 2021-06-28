@@ -2,3 +2,7 @@
 	path = Axis/vendor/GLFW
 	url = https://github.com/harryx55/glfw
 	branch = master
+[submodule "Axis/vendor/Imgui"]
+	path = Axis/vendor/Imgui
+	url = https://github.com/harryx55/imgui
+	branch = master

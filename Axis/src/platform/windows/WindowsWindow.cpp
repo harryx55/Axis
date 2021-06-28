@@ -2,6 +2,8 @@
 #include "WindowsWindow.h"
 #include "Log.h"
 
+#include "glad/glad.h"
+
 namespace Axis
 {
 	static bool sGLFW_INIT = false;

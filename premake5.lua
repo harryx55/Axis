@@ -13,9 +13,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir ["GLFW"] = "Axis/vendor/GLFW/include"
 IncludeDir ["Glad"] = "Axis/vendor/GLAD/include"
+IncludeDir ["IMGUI"] = "Axis/vendor/ImGui"
 
 include "Axis/vendor/GLFW"
 include "Axis/vendor/Glad"
+include "Axis/vendor/ImGui"
 
 project "Axis"
 	location "Axis"
@@ -58,15 +60,17 @@ project "Axis"
 		"%{prj.name}/src/Axis",
 		"%{prj.name}/vendor/spdlog/include",
 
-		"{IncludeDir.GLFW}",
-		"{IncludeDir.Glad}",
+		"%{prj.name}/vendor/Glad/include",
+		"%{prj.name}/vendor/ImGui",
 		"%{prj.name}/vendor/GLFW/include"
+
 	}
 
 	links 
 	{
 		"GLFW",
 		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 

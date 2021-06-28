@@ -7,6 +7,9 @@
     <Filter Include="Axis\Events">
       <UniqueIdentifier>{3E7BFA60-AA30-7356-3325-6D2D9FD9695A}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Axis\Imgui">
+      <UniqueIdentifier>{644924C5-5001-6612-B908-3F6EA5DF0003}</UniqueIdentifier>
+    </Filter>
     <Filter Include="platform">
       <UniqueIdentifier>{4A63C33C-3630-1E48-5F49-0CF04B7553D6}</UniqueIdentifier>
     </Filter>
@@ -37,6 +40,9 @@
     <ClInclude Include="src\Axis\Events\MouseEvent.h">
       <Filter>Axis\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Axis\Imgui\ImguiLayer.h">
+      <Filter>Axis\Imgui</Filter>
+    </ClInclude>
     <ClInclude Include="src\Axis\Layer.h">
       <Filter>Axis</Filter>
     </ClInclude>
@@ -53,10 +59,14 @@
     <ClInclude Include="src\platform\windows\WindowsWindow.h">
       <Filter>platform\windows</Filter>
     </ClInclude>
+    <ClInclude Include="src\platform\OpenGL\ImGuiRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Axis\Application.cpp">
       <Filter>Axis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Axis\Imgui\ImguiLayer.cpp">
+      <Filter>Axis\Imgui</Filter>
     </ClCompile>
     <ClCompile Include="src\Axis\LayerStack.cpp">
       <Filter>Axis</Filter>
@@ -68,5 +78,6 @@
     <ClCompile Include="src\platform\windows\WindowsWindow.cpp">
       <Filter>platform\windows</Filter>
     </ClCompile>
+    <ClCompile Include="src\platform\OpenGL\ImGuiRenderer.cpp" />
   </ItemGroup>
 </Project>
