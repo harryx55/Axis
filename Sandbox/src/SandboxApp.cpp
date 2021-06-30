@@ -2,18 +2,16 @@
 #include "LayerStack.h"
 #include "Layer.h"
 
-class ExampleLayer : public Axis::Layer
+class ExampleLayer : public Axis::ILayer
 {
 public:
 	ExampleLayer()
-		: Layer("Example")
+		: ILayer("Example")
 	{
-
 	}
 
 	void OnUpdate() override
 	{
-		AX_INFO("Updating Example Layer");
 	}
 };
 
@@ -22,7 +20,7 @@ class Sandbox : public Axis::Application
 public:
 	Sandbox()
 	{
-		PushLayer(new ExampleLayer());
+		PushOverlay(new Axis::ImguiLayer());
 	}
 
 	~Sandbox()

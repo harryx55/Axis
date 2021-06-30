@@ -25,14 +25,14 @@ namespace Axis
 }
 
 
-#define AX_CORE_TRACE(...)	 ::Axis::Log::GetCoreLogger()->trace(__VA_ARGS__)
-#define AX_CORE_ERROR(...)	 ::Axis::Log::GetCoreLogger()->error(__VA_ARGS__)
-#define AX_CORE_WARN(...)	 ::Axis::Log::GetCoreLogger()->warn (__VA_ARGS__)
-#define AX_CORE_INFO(...)	 ::Axis::Log::GetCoreLogger()->info (__VA_ARGS__)
-#define AX_CORE_DEBUG(...)	 ::Axis::Log::GetCoreLogger()->debug(__VA_ARGS__)
+#define AX_CORE_DEBUG_INFO(...)	 ::Axis::Log::GetCoreLogger()->debug(__VA_ARGS__)
+#define AX_CORE_TRACE(...)		 ::Axis::Log::GetCoreLogger()->trace(__VA_ARGS__)
+#define AX_CORE_ERROR(...)		 ::Axis::Log::GetCoreLogger()->error(__VA_ARGS__)
+#define AX_CORE_WARN(...)		 ::Axis::Log::GetCoreLogger()->warn (__VA_ARGS__)
+#define AX_CORE_INFO(...)		 ::Axis::Log::GetCoreLogger()->info (__VA_ARGS__)
 
-#define AX_TRACE(...)		 ::Axis::Log::GetClientLogger()->trace(__VA_ARGS__)
-#define AX_ERROR(...)		 ::Axis::Log::GetClientLogger()->error(__VA_ARGS__)
-#define AX_WARN(...)		 ::Axis::Log::GetClientLogger()->warn (__VA_ARGS__)
-#define AX_INFO(...)		 ::Axis::Log::GetClientLogger()->info (__VA_ARGS__)
-#define AX_DEBUG(...)		 ::Axis::Log::GetClientLogger()->debug(__VA_ARGS__)
+#define AX_TRACE(...)			 ::Axis::Log::GetClientLogger()->trace(__VA_ARGS__)
+#define AX_ERROR(...)			 ::Axis::Log::GetClientLogger()->error(__VA_ARGS__)
+#define AX_WARN(...)			 ::Axis::Log::GetClientLogger()->warn (__VA_ARGS__)
+#define AX_INFO(...)			 ::Axis::Log::GetClientLogger()->info (__VA_ARGS__)
+#define AX_DEBUG_INFO(...)		 ::Axis::Log::GetClientLogger()->debug(__VA_ARGS__)

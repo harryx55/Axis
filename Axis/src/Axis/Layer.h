@@ -3,10 +3,10 @@
 
 namespace Axis
 {
-	class Layer
+	class ILayer
 	{
 	public:
-		virtual ~Layer() = default;
+		virtual ~ILayer() = default;
 
 		virtual void OnAttach() { }
 		virtual void OnDetach() { }
@@ -16,7 +16,7 @@ namespace Axis
 		virtual void OnImguiRender() { }
 
 #ifdef AX_DEBUG
-		Layer(char* name) : m_name(name) { }
+		ILayer(char* name) : m_name(name) { }
 		const char* GetName() const { return m_name; }
 	private:
 		char* m_name;

@@ -24,17 +24,23 @@ namespace Axis {
 	{
 		while (!glfwWindowShouldClose(MainWindow->GetWindow()))
 		{
+			glClear(GL_COLOR_BUFFER_BIT);
+			glClearColor(0.4f, 0.5f, 0.6f, 1.0f);
+
+			for (ILayer* layer : m_LayerStack)
+				layer->OnUpdate();
+
 			MainWindow->onUpdate();
 		}
 	}
 
-	void Application::PushLayer(Layer* layer)
+	void Application::PushLayer(ILayer* layer)
 	{
 		m_LayerStack.Push(layer);
-		layer->OnAttach();	
+		layer->OnAttach();
 	}
 
-	void Application::PushOverlay(Layer* layer)
+	void Application::PushOverlay(ILayer* layer)
 	{
 		m_LayerStack.PushOverlay(layer);
 		layer->OnAttach();

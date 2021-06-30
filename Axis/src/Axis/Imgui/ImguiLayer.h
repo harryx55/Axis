@@ -4,7 +4,7 @@
 
 namespace Axis
 {
-	class AXIS_API ImguiLayer : Layer
+	class AXIS_API ImguiLayer : public ILayer
 	{
 	public:
 		ImguiLayer();

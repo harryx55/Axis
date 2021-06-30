@@ -43,9 +43,6 @@
     <ClInclude Include="src\Axis\Imgui\ImguiLayer.h">
       <Filter>Axis\Imgui</Filter>
     </ClInclude>
-    <ClInclude Include="src\Axis\Layer.h">
-      <Filter>Axis</Filter>
-    </ClInclude>
     <ClInclude Include="src\Axis\LayerStack.h">
       <Filter>Axis</Filter>
     </ClInclude>
@@ -60,6 +57,12 @@
       <Filter>platform\windows</Filter>
     </ClInclude>
     <ClInclude Include="src\platform\OpenGL\ImGuiRenderer.h" />
+    <ClInclude Include="src\platform\OpenGL\imgui_impl_glfw.h" />
+    <ClInclude Include="src\platform\windows\WindowsInput.h" />
+    <ClInclude Include="src\Axis\Input.h" />
+    <ClInclude Include="src\Axis\Layer.h">
+      <Filter>Axis</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Axis\Application.cpp">
@@ -79,5 +82,7 @@
       <Filter>platform\windows</Filter>
     </ClCompile>
     <ClCompile Include="src\platform\OpenGL\ImGuiRenderer.cpp" />
+    <ClCompile Include="src\platform\OpenGL\imgui_impl_glfw.cpp" />
+    <ClCompile Include="src\platform\windows\WindowsInput.cpp" />
   </ItemGroup>
 </Project>

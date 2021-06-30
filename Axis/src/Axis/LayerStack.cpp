@@ -5,20 +5,20 @@ namespace Axis
 {
 	LayerStack::~LayerStack()
 	{
-		for (Layer* layer : m_Layers)
+		for (ILayer* layer : m_Layers)
 		{
 			layer->OnDetach();
 			delete layer;
 		}
 	}
 
-	void LayerStack::Push(Layer* layer)
+	void LayerStack::Push(ILayer* layer)
 	{
 		m_Layers.emplace(m_Layers.begin() + m_LayerInsertIndex, layer);
 		m_LayerInsertIndex++;
 	}
 
-	void LayerStack::Pop(Layer* layer)
+	void LayerStack::Pop(ILayer* layer)
 	{
 		auto it = std::find(m_Layers.begin(), m_Layers.begin() + m_LayerInsertIndex, layer);
 		if (it != m_Layers.begin() + m_LayerInsertIndex)
@@ -29,7 +29,7 @@ namespace Axis
 		}
 	}
 
-	void LayerStack::PopOverlay(Layer* overlay)
+	void LayerStack::PopOverlay(ILayer* overlay)
 	{
 		auto it = std::find(m_Layers.begin() + m_LayerInsertIndex, m_Layers.end(), overlay);
 		if (it != m_Layers.end())
@@ -39,7 +39,7 @@ namespace Axis
 		}
 	}
 
-	void LayerStack::PushOverlay(Layer* overlay)
+	void LayerStack::PushOverlay(ILayer* overlay)
 	{
 		m_Layers.emplace_back(overlay);
 	}

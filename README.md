@@ -15,11 +15,11 @@ run `build.bat` to generate project files
 Axis Engine is covered by the [Apache License](LICENSE.md)
 
 ## External Libraries used
-- glfw(https://github.com/glfw/glfw)
-- glad(https://glad.dav1d.de/)
-- imgui(https://github.com/ocornut/imgui)
-- spdlog(https://github.com/gabime/spdlog)
-- premake(https://github.com/premake/premake-core)
+* [glfw](https://github.com/glfw/glfw)
+* [glad](https://glad.dav1d.de/)
+* [imgui](https://github.com/ocornut/imgui)
+* [spdlog](https://github.com/gabime/spdlog)
+* [premake](https://github.com/premake/premake-core)
 
 ## Features To be added
 - Multi-platform support (Windows, Linux, Mac, Android, IOS)

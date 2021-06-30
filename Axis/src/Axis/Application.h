@@ -5,6 +5,9 @@
 #include "platform/windows/WindowsWindow.h"
 #include <Axis/Imgui/ImguiLayer.h>
 
+#include "Platform/windows/WindowsInput.h"
+#include "Log.h"
+
 
 namespace Axis
 {
@@ -19,14 +22,15 @@ namespace Axis
 		WindowsWindow& GetWindow() { return *MainWindow; }
 		void Run();
 
-		void PushLayer(Layer* layer);
-		void PushOverlay(Layer* layer);
+		void PushLayer(ILayer* layer);
+		void PushOverlay(ILayer* layer);
 
 	private:
 		WindowProps props { "Axis Engine", 1280, 720 };
 		static Application* s_Instance;
 		WindowsWindow* MainWindow;
 
+		ImguiLayer *m_imguiLayer = NULL;
 		LayerStack m_LayerStack;
 		bool running = true;
 	};
