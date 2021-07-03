@@ -80,7 +80,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>AXIS_BUILD_DLL;AXIS_PLATFORM_WINDOWS;GLFW_INCLUDE_NONE;AXIS_ENABLE_ASSERT;_WINDLL;AX_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;src\Axis;vendor\spdlog\include;..\{IncludeDir.GLFW};..\{IncludeDir.Glad};..\{IncludeDir.ImGui};vendor\Glad\include;vendor\ImGui;vendor\GLFW\include;src\Axis\Interface;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;src\Axis;vendor\spdlog\include;vendor\Glad\include;vendor\ImGui;vendor\GLFW\include;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -104,7 +104,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>AXIS_BUILD_DLL;AXIS_PLATFORM_WINDOWS;GLFW_INCLUDE_NONE;AXIS_ENABLE_ASSERT;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;src\Axis;vendor\spdlog\include;..\{IncludeDir.GLFW};..\{IncludeDir.Glad};..\{IncludeDir.ImGui};vendor\Glad\include;vendor\ImGui;vendor\GLFW\include;src\Axis\Interface;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;src\Axis;vendor\spdlog\include;vendor\Glad\include;vendor\ImGui;vendor\GLFW\include;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
@@ -126,7 +126,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>AXIS_BUILD_DLL;AXIS_PLATFORM_WINDOWS;GLFW_INCLUDE_NONE;AXIS_ENABLE_ASSERT;_WINDLL;AX_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;src\Axis;vendor\spdlog\include;..\{IncludeDir.GLFW};..\{IncludeDir.Glad};..\{IncludeDir.ImGui};vendor\Glad\include;vendor\ImGui;vendor\GLFW\include;src\Axis\Interface;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;src\Axis;vendor\spdlog\include;vendor\Glad\include;vendor\ImGui;vendor\GLFW\include;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -153,10 +153,6 @@
     <ClInclude Include="src\Axis\Application.h" />
     <ClInclude Include="src\Axis\Core.h" />
     <ClInclude Include="src\Axis\EntryPoint.h" />
-    <ClInclude Include="src\Axis\Events\ApplicationEvent.h" />
-    <ClInclude Include="src\Axis\Events\Events.h" />
-    <ClInclude Include="src\Axis\Events\KeyEvent.h" />
-    <ClInclude Include="src\Axis\Events\MouseEvent.h" />
     <ClInclude Include="src\Axis\Imgui\ImguiLayer.h" />
     <ClInclude Include="src\Axis\Input.h" />
     <ClInclude Include="src\Axis\Layer.h" />
@@ -177,16 +173,8 @@
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\platform\OpenGL\ImGuiRenderer.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Released|x64'">Use</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">Use</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="src\platform\OpenGL\imgui_impl_glfw.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Released|x64'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
+    <ClCompile Include="src\platform\OpenGL\ImGuiRenderer.cpp" />
+    <ClCompile Include="src\platform\OpenGL\imgui_impl_glfw.cpp" />
     <ClCompile Include="src\platform\windows\WindowsInput.cpp" />
     <ClCompile Include="src\platform\windows\WindowsWindow.cpp" />
   </ItemGroup>

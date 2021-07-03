@@ -15,6 +15,7 @@ run `build.bat` to generate project files
 Axis Engine is covered by the [Apache License](LICENSE.md)
 
 ## External Libraries used
+* [glm](https://github.com/g-truc/glm)
 * [glfw](https://github.com/glfw/glfw)
 * [glad](https://glad.dav1d.de/)
 * [imgui](https://github.com/ocornut/imgui)

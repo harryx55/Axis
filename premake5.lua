@@ -62,9 +62,12 @@ project "Axis"
 
 		"%{prj.name}/vendor/Glad/include",
 		"%{prj.name}/vendor/ImGui",
-		"%{prj.name}/vendor/GLFW/include"
+		"%{prj.name}/vendor/GLFW/include",
+
+		"%{prj.name}/vendor/glm"
 
 	}
+
 
 	links 
 	{
@@ -129,7 +132,8 @@ project "Sandbox"
 		"Axis/src/Axis",
 		"Axis/vendor/spdlog/include",
 
-		"Axis/vendor/GLFW/include"
+		"Axis/vendor/GLFW/include",
+		"Axis/vendor/glm"
 	}
 
 

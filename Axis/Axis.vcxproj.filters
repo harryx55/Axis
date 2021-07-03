@@ -4,14 +4,14 @@
     <Filter Include="Axis">
       <UniqueIdentifier>{9AC0827C-86F7-830D-2FE4-69101BFAFF0E}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Axis\Events">
-      <UniqueIdentifier>{3E7BFA60-AA30-7356-3325-6D2D9FD9695A}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Axis\Imgui">
       <UniqueIdentifier>{644924C5-5001-6612-B908-3F6EA5DF0003}</UniqueIdentifier>
     </Filter>
     <Filter Include="platform">
       <UniqueIdentifier>{4A63C33C-3630-1E48-5F49-0CF04B7553D6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="platform\OpenGL">
+      <UniqueIdentifier>{3E351A86-AAC0-874A-B3D1-0A3F1FDCE34A}</UniqueIdentifier>
     </Filter>
     <Filter Include="platform\windows">
       <UniqueIdentifier>{A44FC440-9048-E392-B97A-C817A5D2C29E}</UniqueIdentifier>
@@ -28,20 +28,14 @@
     <ClInclude Include="src\Axis\EntryPoint.h">
       <Filter>Axis</Filter>
     </ClInclude>
-    <ClInclude Include="src\Axis\Events\ApplicationEvent.h">
-      <Filter>Axis\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Axis\Events\Events.h">
-      <Filter>Axis\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Axis\Events\KeyEvent.h">
-      <Filter>Axis\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Axis\Events\MouseEvent.h">
-      <Filter>Axis\Events</Filter>
-    </ClInclude>
     <ClInclude Include="src\Axis\Imgui\ImguiLayer.h">
       <Filter>Axis\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Axis\Input.h">
+      <Filter>Axis</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Axis\Layer.h">
+      <Filter>Axis</Filter>
     </ClInclude>
     <ClInclude Include="src\Axis\LayerStack.h">
       <Filter>Axis</Filter>
@@ -53,15 +47,17 @@
       <Filter>Axis</Filter>
     </ClInclude>
     <ClInclude Include="src\pch.h" />
-    <ClInclude Include="src\platform\windows\WindowsWindow.h">
+    <ClInclude Include="src\platform\OpenGL\ImGuiRenderer.h">
+      <Filter>platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\OpenGL\imgui_impl_glfw.h">
+      <Filter>platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\windows\WindowsInput.h">
       <Filter>platform\windows</Filter>
     </ClInclude>
-    <ClInclude Include="src\platform\OpenGL\ImGuiRenderer.h" />
-    <ClInclude Include="src\platform\OpenGL\imgui_impl_glfw.h" />
-    <ClInclude Include="src\platform\windows\WindowsInput.h" />
-    <ClInclude Include="src\Axis\Input.h" />
-    <ClInclude Include="src\Axis\Layer.h">
-      <Filter>Axis</Filter>
+    <ClInclude Include="src\platform\windows\WindowsWindow.h">
+      <Filter>platform\windows</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -78,11 +74,17 @@
       <Filter>Axis</Filter>
     </ClCompile>
     <ClCompile Include="src\pch.cpp" />
+    <ClCompile Include="src\platform\OpenGL\ImGuiRenderer.cpp">
+      <Filter>platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\OpenGL\imgui_impl_glfw.cpp">
+      <Filter>platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\windows\WindowsInput.cpp">
+      <Filter>platform\windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\platform\windows\WindowsWindow.cpp">
       <Filter>platform\windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\platform\OpenGL\ImGuiRenderer.cpp" />
-    <ClCompile Include="src\platform\OpenGL\imgui_impl_glfw.cpp" />
-    <ClCompile Include="src\platform\windows\WindowsInput.cpp" />
   </ItemGroup>
 </Project>
