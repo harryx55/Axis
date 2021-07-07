@@ -1,5 +1,5 @@
 # Axis
-![Axis](/Res/branding/axis_logo.jpg?raw=true "Axis")
+![Axis](/Res/branding/AxisEngineLogo.png?raw=true "Axis")
 
 ## Axis Game Engine
 Axis Engine is an open source, 2D and 3D game engine. Axis is

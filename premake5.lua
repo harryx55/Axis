@@ -40,7 +40,16 @@ project "Axis"
 		"%{prj.name}/src/Axis/**.h",
 		"%{prj.name}/src/Axis/**.hpp",
 		"%{prj.name}/src/Axis/**.c",
-		"%{prj.name}/src/Axis/**.cpp"
+		"%{prj.name}/src/Axis/**.cpp",
+
+		"%{prj.name}/vendor/ImGui/**.cpp",
+		"%{prj.name}/vendor/ImGui/**.h"
+	}
+
+	filter "files:Axis/vendor/Imgui/**.cpp"
+	flags
+	{
+		"NoPCH"
 	}
 
 	buildoptions
@@ -67,7 +76,6 @@ project "Axis"
 		"%{prj.name}/vendor/glm"
 
 	}
-
 
 	links 
 	{
