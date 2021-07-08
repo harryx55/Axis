@@ -59,12 +59,6 @@
     <ClInclude Include="src\platform\windows\WindowsWindow.h">
       <Filter>platform\windows</Filter>
     </ClInclude>
-    <ClInclude Include="vendor\Imgui\imconfig.h" />
-    <ClInclude Include="vendor\Imgui\imgui.h" />
-    <ClInclude Include="vendor\Imgui\imgui_internal.h" />
-    <ClInclude Include="vendor\Imgui\imstb_rectpack.h" />
-    <ClInclude Include="vendor\Imgui\imstb_textedit.h" />
-    <ClInclude Include="vendor\Imgui\imstb_truetype.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Axis\Application.cpp">
@@ -92,10 +86,5 @@
     <ClCompile Include="src\platform\windows\WindowsWindow.cpp">
       <Filter>platform\windows</Filter>
     </ClCompile>
-    <ClCompile Include="vendor\Imgui\imgui.cpp" />
-    <ClCompile Include="vendor\Imgui\imgui_demo.cpp" />
-    <ClCompile Include="vendor\Imgui\imgui_draw.cpp" />
-    <ClCompile Include="vendor\Imgui\imgui_tables.cpp" />
-    <ClCompile Include="vendor\Imgui\imgui_widgets.cpp" />
   </ItemGroup>
 </Project>

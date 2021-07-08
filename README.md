@@ -1,5 +1,5 @@
 # Axis
-![Axis](/Res/branding/AxisEngineLogo.png?raw=true "Axis")
+![Axis](/Resources/Axis/AxisEngineLogo.png?raw=true "Axis")
 
 ## Axis Game Engine
 Axis Engine is an open source, 2D and 3D game engine. Axis is
@@ -9,7 +9,7 @@ on windows.
 ## Building Axis
 [Visual Studio 2019](https://www.visualstudio.com/downloads/) is recommended.
 clone the repository by running `git clone "https://github.com/harryx55/Axis"`.
-run `build.bat` to generate project files
+run `Generate-solution-files.bat` to generate project files
 
 ## License
 Axis Engine is covered by the [Apache License](LICENSE.md)

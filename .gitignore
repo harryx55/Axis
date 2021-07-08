@@ -1,8 +1,10 @@
 #directories
 .vs/
-bin/
-bin-intermediate/
+bin-out/
+bin-int/
 Debug/
+Release/
+Dist/
 
 
 #files

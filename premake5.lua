@@ -13,7 +13,7 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir ["GLFW"] = "Axis/vendor/GLFW/include"
 IncludeDir ["Glad"] = "Axis/vendor/GLAD/include"
-IncludeDir ["IMGUI"] = "Axis/vendor/ImGui"
+IncludeDir ["ImGui"] = "Axis/vendor/ImGui"
 
 include "Axis/vendor/GLFW"
 include "Axis/vendor/Glad"
@@ -23,9 +23,6 @@ project "Axis"
 	location "Axis"
 	kind "sharedlib"
 	language "c++"
-
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-intermediate/" .. outputdir .. "/%{prj.name}")
 
 	pchheader "pch.h"
 	pchsource "Axis/src/pch.cpp"
@@ -40,16 +37,7 @@ project "Axis"
 		"%{prj.name}/src/Axis/**.h",
 		"%{prj.name}/src/Axis/**.hpp",
 		"%{prj.name}/src/Axis/**.c",
-		"%{prj.name}/src/Axis/**.cpp",
-
-		"%{prj.name}/vendor/ImGui/**.cpp",
-		"%{prj.name}/vendor/ImGui/**.h"
-	}
-
-	filter "files:Axis/vendor/Imgui/**.cpp"
-	flags
-	{
-		"NoPCH"
+		"%{prj.name}/src/Axis/**.cpp"
 	}
 
 	buildoptions
@@ -61,7 +49,6 @@ project "Axis"
 	{
 		"/INCREMENTAL"
 	}
-
 
 	includedirs
 	{
@@ -85,7 +72,6 @@ project "Axis"
 		"opengl32.lib"
 	}
 
-
 	filter "system:windows"
 		cppdialect "c++17"
 		staticruntime "On"
@@ -100,31 +86,41 @@ project "Axis"
 			"_WINDLL"
 		}
 
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
-		}
-
 		filter "configurations:Debug"
 			defines "AX_DEBUG"
 			symbols "On"
+			targetdir ("Debug/bin-out/" .. outputdir .. "/%{prj.name}")
+			objdir ("Debug/bin-int/" .. outputdir .. "/%{prj.name}")
+			postbuildcommands
+			{
+				("{COPY} %{cfg.buildtarget.relpath} ../Debug/bin-out/" .. outputdir .. "/Sandbox")
+			}
 
 		filter "configurations:Release"
 			defines "AX_RELEASE"
 			optimize "On"
+			targetdir ("Release/bin-out/" .. outputdir .. "/%{prj.name}")
+			objdir ("Release/bin-int/" .. outputdir .. "/%{prj.name}")
+			postbuildcommands
+			{
+				("{COPY} %{cfg.buildtarget.relpath} ../Release/bin-out/" .. outputdir .. "/Sandbox")
+			}
 
 		filter "configurations:Dist"
 			defines "AX_DIST"
 			optimize "On"
+			targetdir ("Dist/bin-out/" .. outputdir .. "/%{prj.name}")
+			objdir ("Dist/bin-int/" .. outputdir .. "/%{prj.name}")
+			postbuildcommands
+			{
+				("{COPY} %{cfg.buildtarget.relpath} ../Dist/bin-out/" .. outputdir .. "/Sandbox")
+			}
 
 project "Sandbox"
 
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "c++"
-
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-intermediate/" .. outputdir .. "/%{prj.name}")
 
 	files
 	{
@@ -140,10 +136,9 @@ project "Sandbox"
 		"Axis/src/Axis",
 		"Axis/vendor/spdlog/include",
 
-		"Axis/vendor/GLFW/include",
-		"Axis/vendor/glm"
+		"Axis/vendor/glm",
+		"Axis/vendor/GLFW/include"
 	}
-
 
 	filter "system:windows"
 		cppdialect "c++17"
@@ -164,11 +159,17 @@ project "Sandbox"
 		filter "configurations:Debug"
 			defines "AX_DEBUG"
 			symbols "On"
+			targetdir ("Debug/bin-out/" .. outputdir .. "/%{prj.name}")
+			objdir ("Debug/bin-int/" .. outputdir .. "/%{prj.name}")
 
 		filter "configurations:Release"
 			defines "AX_RELEASE"
 			optimize "On"
+			targetdir ("Release/bin-out/" .. outputdir .. "/%{prj.name}")
+			objdir ("Release/bin-int/" .. outputdir .. "/%{prj.name}")
 
 		filter "configurations:Dist"
 			defines "AX_DIST"
 			optimize "On"
+			targetdir ("Dist/bin-out/" .. outputdir .. "/%{prj.name}")
+			objdir ("Dist/bin-int/" .. outputdir .. "/%{prj.name}")

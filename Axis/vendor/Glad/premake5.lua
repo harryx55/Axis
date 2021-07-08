@@ -2,9 +2,6 @@ project "GLAD"
 	kind "staticLib"
 	language "c"
 
-	targetdir("bin/" .. outputdir .. "/%{prj.name}")
-	targetdir("bin-intermediate/" .. outputdir .. "/%{prj.name}")
-
 	files
 	{
 		"include/glad/glad.h",
@@ -23,3 +20,15 @@ project "GLAD"
 
 		filter { "system:windows", "configurations:release" }
 		buildoptions "/MT"
+
+		filter "configurations:Debug"
+				targetdir("Debug/bin/" .. outputdir .. "/%{prj.name}")
+				targetdir("Debug/bin-int/" .. outputdir .. "/%{prj.name}")
+
+		filter "configurations:Release"
+				targetdir("Release/bin/" .. outputdir .. "/%{prj.name}")
+				targetdir("Release/bin-int/" .. outputdir .. "/%{prj.name}")
+
+		filter "configurations:Dist"
+				targetdir("Dist/bin/" .. outputdir .. "/%{prj.name}")
+				targetdir("Dist/bin-int/" .. outputdir .. "/%{prj.name}")

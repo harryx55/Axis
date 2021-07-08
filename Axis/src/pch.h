@@ -5,6 +5,10 @@
 #include <functional>
 #include <memory>
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdint.h>
+
 #include <iostream>
 #include <string>
 #include <sstream>
