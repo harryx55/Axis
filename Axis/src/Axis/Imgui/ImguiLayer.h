@@ -10,8 +10,12 @@ namespace Axis
 		ImguiLayer();
 		~ImguiLayer();
 
-		void OnUpdate();
-		void OnAttach();
-		void OnDetach();
+		virtual void OnUpdate() override;
+		virtual void OnAttach() override;
+		virtual void OnDetach() override;
+		virtual void OnImguiRender() override;
+
+		void Begin();
+		void End();
 	};
 }

@@ -12,7 +12,6 @@ namespace Axis
 		virtual void OnDetach() { }
 		virtual void OnUpdate() { }
 		virtual void OnRender() { }
-
 		virtual void OnImguiRender() { }
 
 #ifdef AX_DEBUG

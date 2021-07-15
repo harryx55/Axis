@@ -74,10 +74,7 @@
       <Filter>Axis</Filter>
     </ClCompile>
     <ClCompile Include="src\pch.cpp" />
-    <ClCompile Include="src\platform\OpenGL\ImGuiRenderer.cpp">
-      <Filter>platform\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\platform\OpenGL\imgui_impl_glfw.cpp">
+    <ClCompile Include="src\platform\OpenGL\ImguiBuild.cpp">
       <Filter>platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\platform\windows\WindowsInput.cpp">

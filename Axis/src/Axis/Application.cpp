@@ -30,6 +30,11 @@ namespace Axis {
 			for (ILayer* layer : m_LayerStack)
 				layer->OnUpdate();
 
+			m_imguiLayer->Begin();
+			for (ILayer* layer : m_LayerStack)
+				layer->OnImguiRender();
+			m_imguiLayer->End();
+
 			MainWindow->onUpdate();
 		}
 	}
