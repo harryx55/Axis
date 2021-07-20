@@ -10,6 +10,7 @@
 #include "Application.h"
 #include "glad/glad.h"
 
+#include "Log.h"
 namespace Axis
 {
 	ImguiLayer::ImguiLayer()
@@ -23,27 +24,29 @@ namespace Axis
 
 	void ImguiLayer::OnAttach()
 	{
-		int status = gladLoadGL();
-		if (!status)
-			AX_ASSERT(status, "glad not initialzed");
-		
+		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
 		ImGui::StyleColorsDark();
 
-		ImGuiIO& io = ImGui::GetIO();
-		io.BackendFlags |= ImGuiBackendFlags_HasMouseCursors;
-		io.BackendFlags |= ImGuiBackendFlags_HasSetMousePos;
-
-		io.KeyMap[ImGuiKey_LeftArrow] = GLFW_KEY_LEFT;
-		io.KeyMap[ImGuiKey_RightArrow] = GLFW_KEY_RIGHT;
-		io.KeyMap[ImGuiKey_DownArrow] = GLFW_KEY_DOWN;
-		io.KeyMap[ImGuiKey_UpArrow] = GLFW_KEY_UP;
-
-		ImGui_ImplOpenGL3_Init("#version 140");
+		ImGuiIO& io = ImGui::GetIO(); (void)io;
 		
-		// PLACE HOLDER CODE
+		io.BackendFlags |= ImGuiBackendFlags_PlatformHasViewports;
+		io.BackendFlags |= ImGuiBackendFlags_RendererHasViewports;
+
+		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+		io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
+		io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+		
+		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+		{
+			ImGuiStyle& style = ImGui::GetStyle();
+			style.WindowRounding = 5.0f;
+			style.Colors[ImGuiCol_WindowBg].w = 1.0f;
+		}
+
 		Application& app = Application::Get();
 		ImGui_ImplGlfw_InitForOpenGL(app.GetWindow().GetWindow(), true);
+		ImGui_ImplOpenGL3_Init("#version 140");
 	}
 
 	void ImguiLayer::OnUpdate()
@@ -76,10 +79,9 @@ namespace Axis
 
 		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
 		{
-			GLFWwindow* backup_current_context = glfwGetCurrentContext();
 			ImGui::UpdatePlatformWindows();
 			ImGui::RenderPlatformWindowsDefault();
-			glfwMakeContextCurrent(backup_current_context);
+			glfwMakeContextCurrent(app.GetWindow().GetWindow());
 		}
 	}
 
