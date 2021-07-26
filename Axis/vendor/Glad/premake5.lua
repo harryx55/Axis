@@ -1,11 +1,11 @@
 project "GLAD"
 	kind "staticLib"
 	language "c"
+	cppdialect "c++17"
+	staticruntime "On"
 
 	files
 	{
-		"include/glad/glad.h",
-		"include/glad/Khrplatform.h",
 		"src/glad.c"
 	}
 
@@ -16,10 +16,6 @@ project "GLAD"
 
 	filter "system:windows"
 		systemversion "latest"
-		staticruntime "On"
-
-		filter { "system:windows", "configurations:release" }
-		buildoptions "/MT"
 
 		filter "configurations:Debug"
 				targetdir("Debug/bin/" .. outputdir .. "/%{prj.name}")

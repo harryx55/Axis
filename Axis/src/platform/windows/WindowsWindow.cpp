@@ -24,7 +24,7 @@ namespace Axis
 		m_data.width = props.width;
 		m_data.height = props.height;
 
-		
+
 		if (!sGLFW_INIT)
 		{
 			int status = glfwInit();

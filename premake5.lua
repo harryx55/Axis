@@ -21,8 +21,10 @@ include "Axis/vendor/ImGui"
 
 project "Axis"
 	location "Axis"
-	kind "sharedlib"
+	kind "Staticlib"
 	language "c++"
+	cppdialect "c++17"
+	staticruntime "On"
 
 	pchheader "pch.h"
 	pchsource "Axis/src/pch.cpp"
@@ -38,16 +40,6 @@ project "Axis"
 		"%{prj.name}/src/Axis/**.hpp",
 		"%{prj.name}/src/Axis/**.c",
 		"%{prj.name}/src/Axis/**.cpp"
-	}
-
-	buildoptions
-	{
-		"/MDd"
-	}
-
-	linkoptions
-	{
-		"/INCREMENTAL"
 	}
 
 	includedirs
@@ -73,8 +65,6 @@ project "Axis"
 	}
 
 	filter "system:windows"
-		cppdialect "c++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -83,6 +73,7 @@ project "Axis"
 			"AXIS_PLATFORM_WINDOWS",
 			"GLFW_INCLUDE_NONE",
 			"AXIS_ENABLE_ASSERT",
+			"_CRT_SECURE_NO_WARNINGS",
 			"_WINDLL"
 		}
 
@@ -91,36 +82,28 @@ project "Axis"
 			symbols "On"
 			targetdir ("Debug/bin-out/" .. outputdir .. "/%{prj.name}")
 			objdir ("Debug/bin-int/" .. outputdir .. "/%{prj.name}")
-			postbuildcommands
-			{
-				("{COPY} %{cfg.buildtarget.relpath} ../Debug/bin-out/" .. outputdir .. "/Sandbox")
-			}
+
 
 		filter "configurations:Release"
 			defines "AX_RELEASE"
 			optimize "On"
 			targetdir ("Release/bin-out/" .. outputdir .. "/%{prj.name}")
 			objdir ("Release/bin-int/" .. outputdir .. "/%{prj.name}")
-			postbuildcommands
-			{
-				("{COPY} %{cfg.buildtarget.relpath} ../Release/bin-out/" .. outputdir .. "/Sandbox")
-			}
+
 
 		filter "configurations:Dist"
 			defines "AX_DIST"
 			optimize "On"
 			targetdir ("Dist/bin-out/" .. outputdir .. "/%{prj.name}")
 			objdir ("Dist/bin-int/" .. outputdir .. "/%{prj.name}")
-			postbuildcommands
-			{
-				("{COPY} %{cfg.buildtarget.relpath} ../Dist/bin-out/" .. outputdir .. "/Sandbox")
-			}
+
 
 project "Sandbox"
 
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "c++"
+	cppdialect "c++17"
 
 	files
 	{
@@ -141,7 +124,6 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "c++17"
 		staticruntime "On"
 		systemversion "latest"
 

@@ -10,9 +10,6 @@
     <Filter Include="platform">
       <UniqueIdentifier>{4A63C33C-3630-1E48-5F49-0CF04B7553D6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="platform\OpenGL">
-      <UniqueIdentifier>{3E351A86-AAC0-874A-B3D1-0A3F1FDCE34A}</UniqueIdentifier>
-    </Filter>
     <Filter Include="platform\windows">
       <UniqueIdentifier>{A44FC440-9048-E392-B97A-C817A5D2C29E}</UniqueIdentifier>
     </Filter>
@@ -47,22 +44,21 @@
       <Filter>Axis</Filter>
     </ClInclude>
     <ClInclude Include="src\pch.h" />
-    <ClInclude Include="src\platform\OpenGL\ImGuiRenderer.h">
-      <Filter>platform\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\platform\OpenGL\imgui_impl_glfw.h">
-      <Filter>platform\OpenGL</Filter>
-    </ClInclude>
     <ClInclude Include="src\platform\windows\WindowsInput.h">
       <Filter>platform\windows</Filter>
     </ClInclude>
     <ClInclude Include="src\platform\windows\WindowsWindow.h">
       <Filter>platform\windows</Filter>
     </ClInclude>
+    <ClInclude Include="src\Axis\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\platform\OpenGL\OpenGLContext.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Axis\Application.cpp">
       <Filter>Axis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Axis\Imgui\ImguiBuild.cpp">
+      <Filter>Axis\Imgui</Filter>
     </ClCompile>
     <ClCompile Include="src\Axis\Imgui\ImguiLayer.cpp">
       <Filter>Axis\Imgui</Filter>
@@ -74,14 +70,12 @@
       <Filter>Axis</Filter>
     </ClCompile>
     <ClCompile Include="src\pch.cpp" />
-    <ClCompile Include="src\platform\OpenGL\ImguiBuild.cpp">
-      <Filter>platform\OpenGL</Filter>
-    </ClCompile>
     <ClCompile Include="src\platform\windows\WindowsInput.cpp">
       <Filter>platform\windows</Filter>
     </ClCompile>
     <ClCompile Include="src\platform\windows\WindowsWindow.cpp">
       <Filter>platform\windows</Filter>
     </ClCompile>
+    <ClCompile Include="src\platform\OpenGL\OpenGLContext.cpp" />
   </ItemGroup>
 </Project>

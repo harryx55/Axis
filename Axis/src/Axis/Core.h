@@ -2,11 +2,15 @@
 
 
 #ifdef AXIS_PLATFORM_WINDOWS
+#if AXIS_DYNAMIC_LINK
 	#ifdef AXIS_BUILD_DLL
 		#define AXIS_API __declspec(dllexport)
 	#else
 		#define AXIS_API __declspec(dllimport)
 	#endif
+#else
+	#define AXIS_API
+#endif
 #else
 	#error Axis does not support platform
 #endif
