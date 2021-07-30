@@ -7,7 +7,7 @@ namespace Axis
 	OpenGLContext::OpenGLContext(GLFWwindow* window)
 		: m_window(window)
 	{
-		AX_ASSERT(m_window, "GLFW window not initialized");
+		AX_CORE_ASSERT(!m_window, "GLFW window not initialized");
 
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
@@ -17,8 +17,12 @@ namespace Axis
 	void OpenGLContext::Init()
 	{
 		glfwMakeContextCurrent(m_window);
+		
 		int status = gladLoadGL();
-		AX_ASSERT(status, "GLAD window not initialized");
+		AX_ASSERT(!status, "GLAD window not initialized");
+		
+		AX_CORE_INFO("{0}", glGetString(GL_RENDERER));
+		AX_CORE_INFO("{0}", glGetString(GL_VERSION));
 	}
 
 	void OpenGLContext::SwapBuffers()

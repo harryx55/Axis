@@ -13,7 +13,6 @@ namespace Axis {
 		s_Instance = this;
 
 		MainWindow = new WindowsWindow(props);
-		gladLoadGL();
 	}
 
 	Application::~Application()

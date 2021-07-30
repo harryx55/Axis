@@ -9,7 +9,6 @@
 #include <stdio.h>
 #include <stdint.h>
 
-#include <iostream>
 #include <string>
 #include <sstream>
 #include <fstream>
@@ -19,6 +18,10 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include <optional>
+#include <variant>
+#include <any>
 #include <tuple>
 
 #include "Core.h"
+#include "Log.h"

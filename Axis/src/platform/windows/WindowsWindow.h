@@ -17,13 +17,12 @@ namespace Axis
 		void onUpdate();
 		void SetVSync(bool enabled);
 
-		unsigned int GetWidth()  const { return m_data.width; }
-		unsigned int GetHeight() const { return m_data.height; }
-		GLFWwindow* GetWindow() const { return m_window; }
+		GLFWwindow* GetWindow()		const { return m_window;		}
+		unsigned int GetWidth()		const { return m_data.width;	}
+		unsigned int GetHeight()	const { return m_data.height;	}
 
 	private:
 		void Init(const WindowProps&);
-		void ShutDown();
 
 	private:
 		GLFWwindow* m_window;
