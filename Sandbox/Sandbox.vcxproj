@@ -78,8 +78,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>AXIS_PLATFORM_WINDOWS;AXIS_ENABLE_ASSERT;AX_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Axis\src;..\Axis\src\Axis;..\Axis\vendor\spdlog\include;..\Axis\vendor\glm;..\Axis\vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>AXIS_PLATFORM_WINDOWS;AXIS_ENABLE_ASSERT;GLFW_INCLUDE_NONE;AX_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Axis\src;..\Axis\src\Axis;..\Axis\vendor\spdlog\include;..\Axis\vendor\glm;..\Axis\vendor\GLFW\include;..\Axis\vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -94,8 +94,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>AXIS_PLATFORM_WINDOWS;AXIS_ENABLE_ASSERT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Axis\src;..\Axis\src\Axis;..\Axis\vendor\spdlog\include;..\Axis\vendor\glm;..\Axis\vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>AXIS_PLATFORM_WINDOWS;AXIS_ENABLE_ASSERT;GLFW_INCLUDE_NONE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Axis\src;..\Axis\src\Axis;..\Axis\vendor\spdlog\include;..\Axis\vendor\glm;..\Axis\vendor\GLFW\include;..\Axis\vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -108,8 +108,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>AXIS_PLATFORM_WINDOWS;AXIS_ENABLE_ASSERT;AX_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Axis\src;..\Axis\src\Axis;..\Axis\vendor\spdlog\include;..\Axis\vendor\glm;..\Axis\vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>AXIS_PLATFORM_WINDOWS;AXIS_ENABLE_ASSERT;GLFW_INCLUDE_NONE;AX_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Axis\src;..\Axis\src\Axis;..\Axis\vendor\spdlog\include;..\Axis\vendor\glm;..\Axis\vendor\GLFW\include;..\Axis\vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>

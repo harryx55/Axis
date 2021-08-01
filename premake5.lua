@@ -120,7 +120,8 @@ project "Sandbox"
 		"Axis/vendor/spdlog/include",
 
 		"Axis/vendor/glm",
-		"Axis/vendor/GLFW/include"
+		"Axis/vendor/GLFW/include",
+		"Axis/vendor/Glad/include"
 	}
 
 	filter "system:windows"
@@ -130,7 +131,8 @@ project "Sandbox"
 		defines
 		{
 			"AXIS_PLATFORM_WINDOWS",
-			"AXIS_ENABLE_ASSERT"
+			"AXIS_ENABLE_ASSERT",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		links

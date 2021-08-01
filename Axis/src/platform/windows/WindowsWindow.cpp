@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "WindowsWindow.h"
-#include "Log.h"
 
 #include "glad/glad.h"
 
@@ -23,13 +22,19 @@ namespace Axis
 		m_data.width = props.width;
 		m_data.height = props.height;
 
-		int status = glfwInit();
-		AX_CORE_ASSERT(!status, "[ERROR]: GLFW not Initialized");
+		int glfwStatus = glfwInit();
+		AX_CORE_ASSERT(!glfwStatus, "[ERROR]: GLFW not Initialized");
+
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
 		m_window = glfwCreateWindow(props.width, props.height, props.title.c_str(), NULL, NULL);
-		m_Context = new OpenGLContext(m_window);
-		m_Context->Init();
-		
+		glfwMakeContextCurrent(m_window);
+
+		int gladStatus = gladLoadGL();
+		AX_CORE_ASSERT(!gladStatus, "[ERROR]: GLAD not Initialized");
+
 		glfwSetWindowUserPointer(m_window, &m_data);
 		SetVSync(true);
 	}
@@ -37,7 +42,7 @@ namespace Axis
 	void WindowsWindow::onUpdate()
 	{
 		glfwPollEvents();
-		m_Context->SwapBuffers();
+		glfwSwapBuffers(m_window);
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)

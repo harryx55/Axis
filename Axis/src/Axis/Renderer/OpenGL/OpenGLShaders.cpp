@@ -1,13 +1,14 @@
 #include "pch.h"
-#include "OpenGLShaders.h"
+
 #include <glad/glad.h>
+#include "OpenGLShaders.h"
 
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/type_ptr.hpp"
 
 namespace Axis
 {
-	Shaders::Shaders(const char* vertexSrc, const char* fragmentSrc)
+	OpenGLShaders::OpenGLShaders(const char* vertexSrc, const char* fragmentSrc)
 	{
 		m_shaderProgram = glCreateProgram();
 		m_vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -74,7 +75,7 @@ namespace Axis
 		glDetachShader(m_shaderProgram, m_fragmentShader);
 	}
 
-	std::optional<std::string> Shaders::ReadShaderSource(const char* filename)
+	std::optional<std::string> OpenGLShaders::ReadShaderSource(const char* filename)
 	{
 		std::fstream fileStream;
 		std::stringstream stringStream;
@@ -93,7 +94,7 @@ namespace Axis
 		return stringStream.str();
 	}
 
-	int Shaders::GetUniformLocation(const std::string& name)
+	int OpenGLShaders::GetUniformLocation(const std::string& name)
 	{
 		int location = glGetUniformLocation(m_shaderProgram, name.c_str());
 
@@ -103,32 +104,32 @@ namespace Axis
 		return location;
 	}
 
-	void Shaders::SetTexture(const char* name, int i)
+	void OpenGLShaders::SetTexture(const char* name, int i)
 	{
 		glUniform1i(GetUniformLocation(name), i);
 	}
 
-	void Shaders::SetUnifromVector3(const char* name, const glm::vec3& vector)
+	void OpenGLShaders::SetUnifromVector3(const char* name, const glm::vec3& vector)
 	{
 		glUniform3fv(GetUniformLocation(name), 1, glm::value_ptr(vector));
 	}
 
-	void Shaders::SetUnifromMatrix4(const char* name, const glm::mat4& matrix)
+	void OpenGLShaders::SetUnifromMatrix4(const char* name, const glm::mat4& matrix)
 	{
 		glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, glm::value_ptr(matrix));
 	}
 
-	void Shaders::bind() const
+	void OpenGLShaders::bind() const
 	{
 		glUseProgram(m_shaderProgram);
 	}
 
-	void Shaders::unbind() const
+	void OpenGLShaders::unbind() const
 	{
 		glUseProgram(0);
 	}
 
-	Shaders::~Shaders()
+	OpenGLShaders::~OpenGLShaders()
 	{
 		glDeleteShader(m_vertexShader);
 		glDeleteShader(m_fragmentShader);

@@ -7,6 +7,12 @@
     <Filter Include="Axis\Imgui">
       <UniqueIdentifier>{644924C5-5001-6612-B908-3F6EA5DF0003}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Axis\Renderer">
+      <UniqueIdentifier>{80518180-EC11-FDB6-B54C-463421CC4193}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Axis\Renderer\OpenGL">
+      <UniqueIdentifier>{B44A039D-A0D9-8C66-49F8-A06135669D0C}</UniqueIdentifier>
+    </Filter>
     <Filter Include="platform">
       <UniqueIdentifier>{4A63C33C-3630-1E48-5F49-0CF04B7553D6}</UniqueIdentifier>
     </Filter>
@@ -40,6 +46,12 @@
     <ClInclude Include="src\Axis\Log.h">
       <Filter>Axis</Filter>
     </ClInclude>
+    <ClInclude Include="src\Axis\Renderer\OpenGL\OpenGLBuffers.h">
+      <Filter>Axis\Renderer\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Axis\Renderer\OpenGL\OpenGLShaders.h">
+      <Filter>Axis\Renderer\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Axis\Window.h">
       <Filter>Axis</Filter>
     </ClInclude>
@@ -50,9 +62,6 @@
     <ClInclude Include="src\platform\windows\WindowsWindow.h">
       <Filter>platform\windows</Filter>
     </ClInclude>
-    <ClInclude Include="src\Axis\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\platform\OpenGL\OpenGLContext.h" />
-    <ClInclude Include="src\platform\OpenGL\OpenGLShaders.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Axis\Application.cpp">
@@ -70,6 +79,12 @@
     <ClCompile Include="src\Axis\Log.cpp">
       <Filter>Axis</Filter>
     </ClCompile>
+    <ClCompile Include="src\Axis\Renderer\OpenGL\OpenGLBuffers.cpp">
+      <Filter>Axis\Renderer\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Axis\Renderer\OpenGL\OpenGLShaders.cpp">
+      <Filter>Axis\Renderer\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\pch.cpp" />
     <ClCompile Include="src\platform\windows\WindowsInput.cpp">
       <Filter>platform\windows</Filter>
@@ -77,7 +92,5 @@
     <ClCompile Include="src\platform\windows\WindowsWindow.cpp">
       <Filter>platform\windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\platform\OpenGL\OpenGLContext.cpp" />
-    <ClCompile Include="src\platform\OpenGL\OpenGLShaders.cpp" />
   </ItemGroup>
 </Project>

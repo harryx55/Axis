@@ -3,9 +3,6 @@
 #include "Window.h"
 #include "GLFW/glfw3.h"
 
-#include "Axis/Renderer/GraphicsContext.h"
-#include "platform/OpenGL/OpenGLContext.h"
-
 namespace Axis
 {
 	class WindowsWindow
@@ -26,7 +23,6 @@ namespace Axis
 
 	private:
 		GLFWwindow* m_window;
-		OpenGLContext* m_Context;
 
 		struct WindowData
 		{

@@ -1,13 +1,16 @@
-#include <string>
+#pragma once
+
+// #include <optional>
+// #include <string>
 #include "glm/glm.hpp"
 
 namespace Axis
 {
-	class Shaders
+	class OpenGLShaders
 	{
 	public:
-		Shaders(const char*, const char*);
-		~Shaders();
+		OpenGLShaders(const char*, const char*);
+		virtual ~OpenGLShaders();
 
 		void bind() const;
 		void unbind() const;
