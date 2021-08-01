@@ -62,6 +62,7 @@
     <ClInclude Include="src\platform\windows\WindowsWindow.h">
       <Filter>platform\windows</Filter>
     </ClInclude>
+    <ClInclude Include="src\Axis\Renderer\OpenGL\OpenGLErrors.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Axis\Application.cpp">
@@ -92,5 +93,6 @@
     <ClCompile Include="src\platform\windows\WindowsWindow.cpp">
       <Filter>platform\windows</Filter>
     </ClCompile>
+    <ClCompile Include="src\Axis\Renderer\OpenGL\OpenGLErrors.cpp" />
   </ItemGroup>
 </Project>

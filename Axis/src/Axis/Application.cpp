@@ -2,6 +2,7 @@
 #include <Axis/Application.h>
 #include <glad/glad.h>
 
+#include "Renderer/OpenGL/OpenGLErrors.h"
 
 namespace Axis {
 
@@ -39,10 +40,18 @@ namespace Axis {
 		float vertices[] =
 		{
 			-0.5f, -0.5f,
-			 0.0f,  0.5f,
-			 0.5f, -0.5f,
+			-0.5f,  0.5f,
+			 0.5f,  0.5f,
+			 0.5f, -0.5f
 		};
-		VertexBuffer = new OpenGLVertexBuffer(vertices, sizeof(float) * 6);
+		VertexBuffer = new OpenGLVertexBuffer(vertices, sizeof(float) * 8);
+
+		uint16_t indices[] =
+		{
+			0, 1, 2, 2, 3, 0
+		};
+
+		IndexBuffer = new OpenGLIndexBuffer(indices, sizeof(uint16_t) * 6);
 
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), nullptr);
@@ -63,7 +72,7 @@ namespace Axis {
 			glClearColor(0.4f, 0.5f, 0.6f, 1.0f);
 
 			shader->bind();
-			glDrawArrays(GL_TRIANGLES, 0, 3);
+			AXIS_GL_ERROR(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr));
 
 			for (ILayer* layer : m_LayerStack)
 				layer->OnUpdate();

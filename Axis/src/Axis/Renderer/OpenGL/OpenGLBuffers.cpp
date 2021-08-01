@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "OpenGLBuffers.h"
 
+#include "OpenGLErrors.h"
+
 namespace Axis
 {
 	OpenGLVertexBuffer::OpenGLVertexBuffer(void* vertices, GLuint size)
