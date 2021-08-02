@@ -19,6 +19,8 @@ namespace Axis
 		const char* GetName() const { return m_name; }
 	private:
 		char* m_name;
+#else
+		ILayer(char* name) { }
 #endif
 	};
 }

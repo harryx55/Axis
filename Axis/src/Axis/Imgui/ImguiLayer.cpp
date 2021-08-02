@@ -40,7 +40,7 @@ namespace Axis
 		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
 		{
 			ImGuiStyle& style = ImGui::GetStyle();
-			style.WindowRounding = 50.0f;
+			style.WindowRounding = 5.0f;
 			style.Colors[ImGuiCol_WindowBg].w = 1.0f;
 		}
 

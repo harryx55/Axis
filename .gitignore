@@ -2,9 +2,12 @@
 .vs/
 bin-out/
 bin-int/
+bin/
 Debug/
 Release/
 Dist/
+obj/
+
 
 
 #files

@@ -72,7 +72,7 @@ namespace Axis {
 			glClearColor(0.4f, 0.5f, 0.6f, 1.0f);
 
 			shader->bind();
-			AXIS_GL_ERROR(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr));
+			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
 
 			for (ILayer* layer : m_LayerStack)
 				layer->OnUpdate();
