@@ -3,6 +3,7 @@
 // #include <optional>
 // #include <string>
 #include "glm/glm.hpp"
+#include <glad/glad.h>
 
 namespace Axis
 {
@@ -15,14 +16,14 @@ namespace Axis
 		void bind() const;
 		void unbind() const;
 
-		void SetTexture(const char*, int i = 0);
+		void SetTexture(const char*, GLint i = 0);
 		void SetUnifromVector3(const char*, const glm::vec3&);
 		void SetUnifromMatrix4(const char*, const glm::mat4&);
 
 	private:
-		unsigned int m_shaderProgram;
-		unsigned int m_vertexShader;
-		unsigned int m_fragmentShader;
+		GLuint m_shaderProgram;
+		GLuint m_vertexShader;
+		GLuint m_fragmentShader;
 
 	private:
 		int GetUniformLocation(const std::string&);

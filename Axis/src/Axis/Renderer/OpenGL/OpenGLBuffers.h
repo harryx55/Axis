@@ -1,9 +1,17 @@
 #pragma once
-
 #include <glad/glad.h>
+
 
 namespace Axis
 {
+	struct BufferLayout
+	{
+		static void AttachElement(int index, std::size_t size, int stride);
+		
+	private:
+		static int offset;
+	};
+
 	class OpenGLVertexBuffer
 	{
 	public:
@@ -28,5 +36,18 @@ namespace Axis
 
 	private:
 		GLuint ibo;
+	};
+
+	class OpenGLVertexArray
+	{
+	public:
+		OpenGLVertexArray();
+		~OpenGLVertexArray();
+
+		void Bind() const;
+		void Unbind() const;
+
+	private:
+		GLuint vertexArray;
 	};
 }

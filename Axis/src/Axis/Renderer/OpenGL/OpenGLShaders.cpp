@@ -1,6 +1,5 @@
 #include "pch.h"
 
-#include <glad/glad.h>
 #include "OpenGLShaders.h"
 #include "OpenGLErrors.h"
 
@@ -11,14 +10,14 @@ namespace Axis
 {
 	OpenGLShaders::OpenGLShaders(const char* vertexSrc, const char* fragmentSrc)
 	{
-		m_shaderProgram = AXIS_GL_ASSERT_INT(glCreateProgram());
-		m_vertexShader = AXIS_GL_ASSERT_INT(glCreateShader(GL_VERTEX_SHADER));
-		m_fragmentShader = AXIS_GL_ASSERT_INT(glCreateShader(GL_FRAGMENT_SHADER));
+		m_shaderProgram = AXIS_GL_ASSERTI(glCreateProgram());
+		m_vertexShader = AXIS_GL_ASSERTI(glCreateShader(GL_VERTEX_SHADER));
+		m_fragmentShader = AXIS_GL_ASSERTI(glCreateShader(GL_FRAGMENT_SHADER));
 
 		AXIS_GL_ASSERT(glShaderSource(m_vertexShader, 1, &vertexSrc, nullptr));
 		AXIS_GL_ASSERT(glCompileShader(m_vertexShader));
 
-		int compileResult = 0;
+		GLint compileResult = 0;
 		AXIS_GL_ASSERT(glGetShaderiv(m_vertexShader, GL_COMPILE_STATUS, &compileResult));
 		if (compileResult == GL_FALSE)
 		{
@@ -27,7 +26,7 @@ namespace Axis
 
 			std::vector<char> infoLog(maxLength);
 			AXIS_GL_ASSERT(glGetShaderInfoLog(m_vertexShader, maxLength, &maxLength, &infoLog[0]));
-			AX_CORE_ERROR("{0}, {1} ", "vertex shader compilation failed", infoLog.data());
+			AX_CORE_ERROR("{0} {1} ", "vertex shader compilation failed", infoLog.data());
 
 			AXIS_GL_ASSERT(glDeleteShader(m_vertexShader));
 			return;
@@ -97,7 +96,7 @@ namespace Axis
 
 	int OpenGLShaders::GetUniformLocation(const std::string& name)
 	{
-		int location = AXIS_GL_ASSERT_INT(glGetUniformLocation(m_shaderProgram, name.c_str()));
+		GLint location = AXIS_GL_ASSERTI(glGetUniformLocation(m_shaderProgram, name.c_str()));
 
 		std::string error_message = "uniform " + name + " does not exist";
 		if (location == -1)
@@ -105,7 +104,7 @@ namespace Axis
 		return location;
 	}
 
-	void OpenGLShaders::SetTexture(const char* name, int i)
+	void OpenGLShaders::SetTexture(const char* name, GLint i)
 	{
 		AXIS_GL_ASSERT(glUniform1i(GetUniformLocation(name), i));
 	}

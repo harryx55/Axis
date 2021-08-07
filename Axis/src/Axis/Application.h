@@ -35,9 +35,10 @@ namespace Axis
 		bool running = true;
 
 	private:
-		OpenGLShaders* shader;
-		OpenGLVertexBuffer* VertexBuffer;
-		OpenGLIndexBuffer* IndexBuffer;
+		std::unique_ptr<OpenGLShaders> shader;
+		std::unique_ptr<OpenGLVertexArray> vertexArray;
+		std::unique_ptr<OpenGLVertexBuffer> VertexBuffer;
+		std::unique_ptr<OpenGLIndexBuffer> IndexBuffer;
 	};
 
 	Application* CreateApplication();

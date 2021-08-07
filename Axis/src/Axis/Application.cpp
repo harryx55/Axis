@@ -11,52 +11,52 @@ namespace Axis {
 	const char* vertexSrc = R"(
 			#version 140
 			in vec3 aPos;
-
+			in vec3 aColor;
+			
+			out vec3 color;
 			void main()
 			{
 				gl_Position = vec4(aPos, 1.0);
+				color = aColor;
 			})";
 
 	const char* fragmentSrc = R"(
 			#version 140
 			out vec4 fragColor;
+			in vec3 color;
 
 			void main()
 			{
-				fragColor = vec4(0.6, 0.5, 0.4, 1.0);
+				fragColor = vec4(0.6, 0.5, 0.4, 1.0) * vec4(color, 1.0);
 			})";
 
 	Application::Application()
 	{
-		AX_ASSERT(!s_Instance, "multiple instances of application not allowed");
 		s_Instance = this;
-
+		AX_CORE_ASSERT(!s_Instance, "multiple instances of application not allowed");
 		MainWindow = new WindowsWindow(props);
-
-		GLuint vao;
-		glGenVertexArrays(1, &vao);
-		glBindVertexArray(vao);
-
+		
+		vertexArray = std::make_unique<OpenGLVertexArray>();
+		vertexArray->Bind();
 		float vertices[] =
 		{
-			-0.5f, -0.5f,
-			-0.5f,  0.5f,
-			 0.5f,  0.5f,
-			 0.5f, -0.5f
+			-0.5f, -0.5f,	1.0f, 0.0f, 0.0f,
+			-0.5f,  0.5f,	0.0f, 1.0f, 0.0f,
+			 0.5f,  0.5f,	0.0f, 0.0f, 1.0f,
+			 0.5f, -0.5f,	0.0f, 1.0f, 0.0f
 		};
-		VertexBuffer = new OpenGLVertexBuffer(vertices, sizeof(float) * 8);
 
+		VertexBuffer = std::make_unique<OpenGLVertexBuffer>(vertices, sizeof(float) * 20);
 		uint16_t indices[] =
 		{
 			0, 1, 2, 2, 3, 0
 		};
 
-		IndexBuffer = new OpenGLIndexBuffer(indices, sizeof(uint16_t) * 6);
+		IndexBuffer = std::make_unique<OpenGLIndexBuffer>(indices, sizeof(uint16_t) * 6);
+		BufferLayout::AttachElement(0, 2, 5);
+		BufferLayout::AttachElement(1, 3, 5);
 
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), nullptr);
-
-		shader = new OpenGLShaders(vertexSrc, fragmentSrc);
+		shader = std::make_unique<OpenGLShaders>(vertexSrc, fragmentSrc);
 	}
 
 	Application::~Application()

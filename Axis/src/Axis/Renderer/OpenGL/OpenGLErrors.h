@@ -1,16 +1,18 @@
 #pragma once
-#include <glad/glad.h>
 
-const char* GL_returnErrorMessage(GLenum error);
+namespace Axis
+{
+	const char* GL_returnErrorMessage(uint32_t error);
 
-void GL_GetError();
-bool GL_CheckError(const char* file, int line);
+	int GlClearErrors(int);
+	bool GlLogCall(const char* function, const char* file, int line);
 
-#ifdef _DEBUG || AX_DEBUG
+#ifdef AX_DEBUG
 	#define GLASSERT(X) if (!(X)) __debugbreak();
-	#define AXIS_GL_ASSERT(X) GL_GetError(); X; GLASSERT(GL_CheckError(__FILE__, __LINE__))
-	#define AXIS_GL_ASSERT_INT(X) X; GL_GetError(); X; GLASSERT(GL_CheckError(__FILE__, __LINE__))
+	#define AXIS_GL_ASSERT(X) GlClearErrors(NULL); X; GLASSERT(GlLogCall(#X, __FILE__, __LINE__))
+	#define AXIS_GL_ASSERTI(X) GlClearErrors(X); X; GLASSERT(GlLogCall(#X, __FILE__, __LINE__))
 #else
 	#define AXIS_GL_ASSERT(X) X
-	#define AXIS_GL_ASSERT_INT(X) X
+	#define AXIS_GL_ASSERTI(X) X
 #endif
+}
