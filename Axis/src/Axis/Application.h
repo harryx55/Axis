@@ -39,6 +39,7 @@ namespace Axis
 		std::unique_ptr<OpenGLVertexArray> vertexArray;
 		std::unique_ptr<OpenGLVertexBuffer> VertexBuffer;
 		std::unique_ptr<OpenGLIndexBuffer> IndexBuffer;
+		BufferLayout layout;
 	};
 
 	Application* CreateApplication();

@@ -53,8 +53,8 @@ namespace Axis {
 		};
 
 		IndexBuffer = std::make_unique<OpenGLIndexBuffer>(indices, sizeof(uint16_t) * 6);
-		BufferLayout::AttachElement(0, 2, 5);
-		BufferLayout::AttachElement(1, 3, 5);
+		layout.AttachElement(0, 2, 5);
+		layout.AttachElement(1, 3, 5);
 
 		shader = std::make_unique<OpenGLShaders>(vertexSrc, fragmentSrc);
 	}

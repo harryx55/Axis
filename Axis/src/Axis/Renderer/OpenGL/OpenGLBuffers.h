@@ -6,7 +6,7 @@ namespace Axis
 {
 	struct BufferLayout
 	{
-		static void AttachElement(int index, std::size_t size, int stride);
+		void AttachElement(int index, std::size_t size, int stride);
 		
 	private:
 		static int offset;
