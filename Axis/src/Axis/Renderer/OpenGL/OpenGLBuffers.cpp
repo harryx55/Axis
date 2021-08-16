@@ -5,87 +5,49 @@
 
 namespace Axis
 {
-	//####################		Buffer Layout Buffer		####################
-	int BufferLayout::offset;
-	void BufferLayout::AttachElement(int index, std::size_t size, int stride)
+	GLuint OpenGLBufferObject::offset;
+	void OpenGLBufferObject::CreateVertexArray()
 	{
-		glEnableVertexAttribArray(index);
-		glVertexAttribPointer(index, size, GL_FLOAT, GL_FALSE, stride * sizeof(float), (void*)(offset * sizeof(float)));
-		offset += size;
+		AXIS_GL_ASSERT(glGenVertexArrays(1, &vao));
 	}
 
+	void OpenGLBufferObject::BindVertexArray()
+	{
+		AXIS_GL_ASSERT(glBindVertexArray(vao));
+	}
 
-
-	//####################		Vertex Buffer		####################
-	OpenGLVertexBuffer::OpenGLVertexBuffer(void* vertices, GLuint size)
-		: vbo(0)
+	void OpenGLBufferObject::CreateVertexBuffer(GLuint count, void* data)
 	{
 		AXIS_GL_ASSERT(glGenBuffers(1, &vbo));
 		AXIS_GL_ASSERT(glBindBuffer(GL_ARRAY_BUFFER, vbo));
-		AXIS_GL_ASSERT(glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW));
+		AXIS_GL_ASSERT(glBufferData(GL_ARRAY_BUFFER, count * sizeof(GL_FLOAT), data, GL_STATIC_DRAW));
 	}
 
-	OpenGLVertexBuffer::~OpenGLVertexBuffer()
-	{
-		AXIS_GL_ASSERT(glDeleteBuffers(1, &vbo));
-	}
-
-	void OpenGLVertexBuffer::bind() const
+	void OpenGLBufferObject::BindVertexBuffer()
 	{
 		AXIS_GL_ASSERT(glBindBuffer(GL_ARRAY_BUFFER, vbo));
 	}
 
-	void OpenGLVertexBuffer::unbind() const
+	void OpenGLBufferObject::CreateIndexBuffer(GLuint count, void* data)
 	{
-		AXIS_GL_ASSERT(glBindBuffer(GL_ARRAY_BUFFER, 0));
-	}
+		indexCount = count;
 
-
-
-	//####################		Index Buffer		####################
-	OpenGLIndexBuffer::OpenGLIndexBuffer(void* indices, GLuint size)
-		: ibo(0)
-	{
 		AXIS_GL_ASSERT(glGenBuffers(1, &ibo));
 		AXIS_GL_ASSERT(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo));
-		AXIS_GL_ASSERT(glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, indices, GL_STATIC_DRAW));
+		AXIS_GL_ASSERT(glBufferData(GL_ELEMENT_ARRAY_BUFFER, count * sizeof(GLuint), data, GL_STATIC_DRAW));
 	}
 
-	OpenGLIndexBuffer::~OpenGLIndexBuffer()
-	{
-		AXIS_GL_ASSERT(glDeleteBuffers(1, &ibo));
-	}
-
-	void OpenGLIndexBuffer::bind() const
+	void OpenGLBufferObject::BindIndexBuffer()
 	{
 		AXIS_GL_ASSERT(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo));
 	}
 
-	void OpenGLIndexBuffer::unbind() const
+	void OpenGLBufferObject::AttachbufferLayout(GLuint index, GLuint size, GLuint stride)
 	{
-		AXIS_GL_ASSERT(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
-	}
+		AXIS_GL_ASSERT(glEnableVertexAttribArray(index));
+		AXIS_GL_ASSERT(glVertexAttribPointer(index, size, GL_FLOAT, GL_FALSE, stride * sizeof(GL_FLOAT),
+			(void*)(offset * sizeof(GL_FLOAT))));
 
-
-
-	//####################		Vertex Array Buffer		####################
-	OpenGLVertexArray::OpenGLVertexArray()
-	{
-		glGenVertexArrays(1, &vertexArray);
-	}
-
-	OpenGLVertexArray::~OpenGLVertexArray()
-	{
-		glDeleteVertexArrays(1, &vertexArray);
-	}
-
-	void OpenGLVertexArray::Bind() const
-	{
-		glBindVertexArray(vertexArray);
-	}
-
-	void OpenGLVertexArray::Unbind() const
-	{
-		glBindVertexArray(0);
+		offset += size;
 	}
 }

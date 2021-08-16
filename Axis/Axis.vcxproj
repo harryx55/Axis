@@ -146,6 +146,7 @@
     <ClInclude Include="src\Axis\Renderer\OpenGL\OpenGLBuffers.h" />
     <ClInclude Include="src\Axis\Renderer\OpenGL\OpenGLErrors.h" />
     <ClInclude Include="src\Axis\Renderer\OpenGL\OpenGLShaders.h" />
+    <ClInclude Include="src\Axis\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Axis\Window.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\platform\windows\WindowsInput.h" />
@@ -160,6 +161,7 @@
     <ClCompile Include="src\Axis\Renderer\OpenGL\OpenGLBuffers.cpp" />
     <ClCompile Include="src\Axis\Renderer\OpenGL\OpenGLErrors.cpp" />
     <ClCompile Include="src\Axis\Renderer\OpenGL\OpenGLShaders.cpp" />
+    <ClCompile Include="src\Axis\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

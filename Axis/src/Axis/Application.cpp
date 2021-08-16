@@ -35,9 +35,10 @@ namespace Axis {
 		s_Instance = this;
 		AX_CORE_ASSERT(!s_Instance, "multiple instances of application not allowed");
 		MainWindow = new WindowsWindow(props);
-		
-		vertexArray = std::make_unique<OpenGLVertexArray>();
-		vertexArray->Bind();
+
+		buffer.CreateVertexArray();
+		buffer.BindVertexArray();
+
 		float vertices[] =
 		{
 			-0.5f, -0.5f,	1.0f, 0.0f, 0.0f,
@@ -45,18 +46,18 @@ namespace Axis {
 			 0.5f,  0.5f,	0.0f, 0.0f, 1.0f,
 			 0.5f, -0.5f,	0.0f, 1.0f, 0.0f
 		};
+		buffer.CreateVertexBuffer(20, vertices);
 
-		VertexBuffer = std::make_unique<OpenGLVertexBuffer>(vertices, sizeof(float) * 20);
-		uint16_t indices[] =
+		uint32_t indices[] =
 		{
 			0, 1, 2, 2, 3, 0
 		};
+		buffer.CreateIndexBuffer(6, indices);
 
-		IndexBuffer = std::make_unique<OpenGLIndexBuffer>(indices, sizeof(uint16_t) * 6);
-		layout.AttachElement(0, 2, 5);
-		layout.AttachElement(1, 3, 5);
+		buffer.AttachbufferLayout(0, 2, 5);
+		buffer.AttachbufferLayout(1, 3, 5);
 
-		shader = std::make_unique<OpenGLShaders>(vertexSrc, fragmentSrc);
+		shader = new OpenGLShaders(vertexSrc, fragmentSrc);
 	}
 
 	Application::~Application()
@@ -68,11 +69,11 @@ namespace Axis {
 	{
 		while (!glfwWindowShouldClose(MainWindow->GetWindow()))
 		{
-			glClear(GL_COLOR_BUFFER_BIT);
-			glClearColor(0.4f, 0.5f, 0.6f, 1.0f);
+			RenderCommand::ClearColor({ 0.4f, 0.5f, 0.6f, 1.0f });
+			RenderCommand::Clear();
 
 			shader->bind();
-			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
+			RenderCommand::DrawIndex(buffer);
 
 			for (ILayer* layer : m_LayerStack)
 				layer->OnUpdate();

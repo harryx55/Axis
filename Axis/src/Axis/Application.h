@@ -9,6 +9,8 @@
 #include "Renderer/OpenGL/OpenGLShaders.h"
 #include "Renderer/OpenGL/OpenGLBuffers.h"
 
+#include "Renderer/RenderCommand.h"
+
 namespace Axis
 {
 	class AXIS_API Application
@@ -35,11 +37,8 @@ namespace Axis
 		bool running = true;
 
 	private:
-		std::unique_ptr<OpenGLShaders> shader;
-		std::unique_ptr<OpenGLVertexArray> vertexArray;
-		std::unique_ptr<OpenGLVertexBuffer> VertexBuffer;
-		std::unique_ptr<OpenGLIndexBuffer> IndexBuffer;
-		BufferLayout layout;
+		OpenGLShaders* shader;
+		OpenGLBufferObject buffer;
 	};
 
 	Application* CreateApplication();

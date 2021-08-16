@@ -63,6 +63,7 @@
       <Filter>platform\windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Axis\Renderer\OpenGL\OpenGLErrors.h" />
+    <ClInclude Include="src\Axis\Renderer\RenderCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Axis\Application.cpp">
@@ -94,5 +95,6 @@
       <Filter>platform\windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Axis\Renderer\OpenGL\OpenGLErrors.cpp" />
+    <ClCompile Include="src\Axis\Renderer\RenderCommand.cpp" />
   </ItemGroup>
 </Project>
