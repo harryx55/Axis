@@ -9,7 +9,7 @@
 #include "Renderer/OpenGL/OpenGLShaders.h"
 #include "Renderer/OpenGL/OpenGLBuffers.h"
 
-#include "Renderer/RenderCommand.h"
+#include "Renderer/Cameras.h"
 
 namespace Axis
 {
@@ -39,6 +39,7 @@ namespace Axis
 	private:
 		OpenGLShaders* shader;
 		OpenGLBufferObject buffer;
+		OrthographicCamera camera;
 	};
 
 	Application* CreateApplication();

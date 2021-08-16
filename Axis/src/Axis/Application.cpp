@@ -4,6 +4,9 @@
 
 #include "Renderer/OpenGL/OpenGLErrors.h"
 
+#include "Renderer/Renderer.h"
+#include "Renderer/RenderCommand.h"
+
 namespace Axis {
 
 	Application* Application::s_Instance = nullptr;
@@ -58,6 +61,7 @@ namespace Axis {
 		buffer.AttachbufferLayout(1, 3, 5);
 
 		shader = new OpenGLShaders(vertexSrc, fragmentSrc);
+		camera.InitCamera(-128, 128, -72, 72);
 	}
 
 	Application::~Application()
@@ -71,9 +75,11 @@ namespace Axis {
 		{
 			RenderCommand::ClearColor({ 0.4f, 0.5f, 0.6f, 1.0f });
 			RenderCommand::Clear();
+			
+			Renderer::BeginScene(camera);
 
 			shader->bind();
-			RenderCommand::DrawIndex(buffer);
+			Renderer::Submit(*shader, buffer);
 
 			for (ILayer* layer : m_LayerStack)
 				layer->OnUpdate();

@@ -17,9 +17,9 @@ namespace Axis
 		AXIS_GL_ASSERT(glClearColor(color.r, color.g, color.b, color.a));
 	}
 
-	void RenderCommand::DrawIndex(const OpenGLBufferObject& buffer)
+	void RenderCommand::DrawIndexed(OpenGLBufferObject& buffer)
 	{
-		
+		buffer.BindVertexArray();
 		AXIS_GL_ASSERT(glDrawElements(GL_TRIANGLES, buffer.indexCount, GL_UNSIGNED_INT, nullptr));
 	}
 }

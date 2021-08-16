@@ -15,7 +15,6 @@ namespace Axis
 
 		void AttachbufferLayout(GLuint index, GLuint size, GLuint stride);
 
-	public:
 		GLuint indexCount;
 	
 	private:

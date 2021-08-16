@@ -64,6 +64,8 @@
     </ClInclude>
     <ClInclude Include="src\Axis\Renderer\OpenGL\OpenGLErrors.h" />
     <ClInclude Include="src\Axis\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Axis\Renderer\Cameras.h" />
+    <ClInclude Include="src\Axis\Renderer\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Axis\Application.cpp">
@@ -96,5 +98,7 @@
     </ClCompile>
     <ClCompile Include="src\Axis\Renderer\OpenGL\OpenGLErrors.cpp" />
     <ClCompile Include="src\Axis\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Axis\Renderer\Cameras.cpp" />
+    <ClCompile Include="src\Axis\Renderer\Renderer.cpp" />
   </ItemGroup>
 </Project>
