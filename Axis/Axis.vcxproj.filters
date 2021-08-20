@@ -66,6 +66,7 @@
     <ClInclude Include="src\Axis\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Axis\Renderer\Cameras.h" />
     <ClInclude Include="src\Axis\Renderer\Renderer.h" />
+    <ClInclude Include="src\Axis\Core\Timestep.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Axis\Application.cpp">

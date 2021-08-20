@@ -10,7 +10,7 @@ namespace Axis
 		ImguiLayer();
 		~ImguiLayer();
 
-		virtual void OnUpdate() override;
+		virtual void OnUpdate(Timestep timestep) override;
 		virtual void OnAttach() override;
 		virtual void OnDetach() override;
 		virtual void OnImguiRender() override;

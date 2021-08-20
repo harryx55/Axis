@@ -10,7 +10,6 @@
 namespace Axis {
 
 	Application* Application::s_Instance = nullptr;
-
 	const char* vertexSrc = R"(
 			#version 140
 			in vec3 aPos;
@@ -73,6 +72,10 @@ namespace Axis {
 	{
 		while (!glfwWindowShouldClose(MainWindow->GetWindow()))
 		{
+			float time = (float)glfwGetTime();
+			timestep = time - LastFrame;
+			LastFrame = time;
+			
 			RenderCommand::ClearColor({ 0.4f, 0.5f, 0.6f, 1.0f });
 			RenderCommand::Clear();
 			
@@ -82,7 +85,7 @@ namespace Axis {
 			Renderer::Submit(*shader, buffer);
 
 			for (ILayer* layer : m_LayerStack)
-				layer->OnUpdate();
+				layer->OnUpdate(timestep);
 
 			m_imguiLayer->Begin();
 			for (ILayer* layer : m_LayerStack)

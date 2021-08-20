@@ -11,6 +11,8 @@
 
 #include "Renderer/Cameras.h"
 
+#include "Axis/Core/Timestep.h"
+
 namespace Axis
 {
 	class AXIS_API Application
@@ -40,6 +42,9 @@ namespace Axis
 		OpenGLShaders* shader;
 		OpenGLBufferObject buffer;
 		OrthographicCamera camera;
+
+		Timestep timestep;
+		float LastFrame = 0.0f;
 	};
 
 	Application* CreateApplication();

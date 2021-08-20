@@ -1,6 +1,8 @@
 #pragma once
 #include "pch.h"
 
+#include "Core/Timestep.h"
+
 namespace Axis
 {
 	class ILayer
@@ -10,7 +12,7 @@ namespace Axis
 
 		virtual void OnAttach() { }
 		virtual void OnDetach() { }
-		virtual void OnUpdate() { }
+		virtual void OnUpdate(Timestep timestep) { }
 		virtual void OnRender() { }
 		virtual void OnImguiRender() { }
 

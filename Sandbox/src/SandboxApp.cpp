@@ -10,8 +10,9 @@ public:
 	{
 	}
 
-	void OnUpdate() override
+	void OnUpdate(Axis::Timestep timestep) override
 	{
+		AX_DEBUG_INFO("{0} ms", timestep.GetMilliSeconds());
 	}
 };
 

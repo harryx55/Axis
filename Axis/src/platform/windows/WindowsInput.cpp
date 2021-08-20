@@ -43,6 +43,6 @@ namespace Axis
 	float WindowsInput::GetMousePosYImpl()
 	{
 		auto [x, y] = GetMousePosImpl();
-		return x;
+		return y;
 	}
 }

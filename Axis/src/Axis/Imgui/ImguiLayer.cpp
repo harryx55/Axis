@@ -49,8 +49,9 @@ namespace Axis
 		ImGui_ImplOpenGL3_Init("#version 140");
 	}
 
-	void ImguiLayer::OnUpdate()
+	void ImguiLayer::OnUpdate(Timestep timestep)
 	{
+		AX_CORE_DEBUG_INFO("{0} ms", timestep.GetMilliSeconds());
 	}
 
 	void ImguiLayer::OnDetach()
