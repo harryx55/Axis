@@ -1,7 +1,4 @@
 #pragma once
-
-// #include <optional>
-// #include <string>
 #include "glm/glm.hpp"
 #include <glad/glad.h>
 
@@ -26,7 +23,7 @@ namespace Axis
 		GLuint m_fragmentShader;
 
 	private:
-		int GetUniformLocation(const std::string&);
-		std::optional<std::string> ReadShaderSource(const char*);
+		int GetUniformLocation(const char* name);
+		const char* ReadShaderSource(const char*);
 	};
 }

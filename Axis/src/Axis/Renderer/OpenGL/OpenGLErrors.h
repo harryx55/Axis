@@ -10,9 +10,7 @@ namespace Axis
 #ifdef AX_DEBUG
 	#define GLASSERT(X) if (!(X)) __debugbreak();
 	#define AXIS_GL_ASSERT(X) GlClearErrors(NULL); X; GLASSERT(GlLogCall(#X, __FILE__, __LINE__))
-	#define AXIS_GL_ASSERTI(X) GlClearErrors(X); X; GLASSERT(GlLogCall(#X, __FILE__, __LINE__))
 #else
 	#define AXIS_GL_ASSERT(X) X
-	#define AXIS_GL_ASSERTI(X) X
 #endif
 }

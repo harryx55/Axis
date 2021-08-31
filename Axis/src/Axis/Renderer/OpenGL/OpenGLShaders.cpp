@@ -10,12 +10,16 @@ namespace Axis
 {
 	OpenGLShaders::OpenGLShaders(const char* vertexSrc, const char* fragmentSrc)
 	{
-		m_shaderProgram = AXIS_GL_ASSERTI(glCreateProgram());
-		m_vertexShader = AXIS_GL_ASSERTI(glCreateShader(GL_VERTEX_SHADER));
-		m_fragmentShader = AXIS_GL_ASSERTI(glCreateShader(GL_FRAGMENT_SHADER));
+		m_shaderProgram = glCreateProgram();
+		m_vertexShader = glCreateShader(GL_VERTEX_SHADER);
+		m_fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+
+		AX_CORE_ASSERT(m_shaderProgram, "Opengl shader program not initialised");
+		AX_CORE_ASSERT(m_vertexShader, "Opengl vertex shader not initialised");
+		AX_CORE_ASSERT(m_fragmentShader, "Opengl fragment shader not initialised");
 
 		AXIS_GL_ASSERT(glShaderSource(m_vertexShader, 1, &vertexSrc, nullptr));
-		AXIS_GL_ASSERT(glCompileShader(m_vertexShader));
+		glCompileShader(m_vertexShader);
 
 		GLint compileResult = 0;
 		AXIS_GL_ASSERT(glGetShaderiv(m_vertexShader, GL_COMPILE_STATUS, &compileResult));
@@ -33,7 +37,7 @@ namespace Axis
 		}
 
 		AXIS_GL_ASSERT(glShaderSource(m_fragmentShader, 1, &fragmentSrc, nullptr));
-		AXIS_GL_ASSERT(glCompileShader(m_fragmentShader));
+		glCompileShader(m_fragmentShader);
 
 		compileResult = 0;
 		AXIS_GL_ASSERT(glGetShaderiv(m_fragmentShader, GL_COMPILE_STATUS, &compileResult));
@@ -50,9 +54,9 @@ namespace Axis
 			return;
 		}
 
-		AXIS_GL_ASSERT(glAttachShader(m_shaderProgram, m_vertexShader));
-		AXIS_GL_ASSERT(glAttachShader(m_shaderProgram, m_fragmentShader));
-		AXIS_GL_ASSERT(glLinkProgram(m_shaderProgram));
+		glAttachShader(m_shaderProgram, m_vertexShader);
+		glAttachShader(m_shaderProgram, m_fragmentShader);
+		glLinkProgram(m_shaderProgram);
 
 		int linkResult = 0;
 		AXIS_GL_ASSERT(glGetProgramiv(m_shaderProgram, GL_LINK_STATUS, &linkResult));
@@ -69,13 +73,13 @@ namespace Axis
 			return;
 		}
 
-		AXIS_GL_ASSERT(glValidateProgram(m_shaderProgram));
+		glValidateProgram(m_shaderProgram);
 
 		AXIS_GL_ASSERT(glDetachShader(m_shaderProgram, m_vertexShader));
 		AXIS_GL_ASSERT(glDetachShader(m_shaderProgram, m_fragmentShader));
 	}
 
-	std::optional<std::string> OpenGLShaders::ReadShaderSource(const char* filename)
+	const char* OpenGLShaders::ReadShaderSource(const char* filename)
 	{
 		std::fstream fileStream;
 		std::stringstream stringStream;
@@ -83,40 +87,40 @@ namespace Axis
 		fileStream.open(filename);
 		if (!fileStream.is_open())
 		{
-			AX_CORE_ERROR("{0}, {1} ", "could not open shader source file at location ", filename);
-			return std::nullopt;
+			AX_CORE_ASSERT(false, " could not open shader source file at location ", filename);
 		}
 
 		AX_CORE_INFO("{0}, {1} ", filename, " shader loaded successfully");
 		stringStream << fileStream.rdbuf();
 		fileStream.close();
 
-		return stringStream.str();
+		return stringStream.str().c_str();
 	}
 
-	int OpenGLShaders::GetUniformLocation(const std::string& name)
+	int OpenGLShaders::GetUniformLocation(const char* name)
 	{
-		GLint location = AXIS_GL_ASSERTI(glGetUniformLocation(m_shaderProgram, name.c_str()));
+		GLint location = glGetUniformLocation(m_shaderProgram, name);
 
-		std::string error_message = "uniform " + name + " does not exist";
 		if (location == -1)
-			AX_CORE_ERROR(error_message.c_str());
+		{
+			AX_CORE_ERROR("Uniform ", name, " does not exist");
+		}
 		return location;
 	}
 
 	void OpenGLShaders::SetTexture(const char* name, GLint i)
 	{
-		AXIS_GL_ASSERT(glUniform1i(GetUniformLocation(name), i));
+		glUniform1i(GetUniformLocation(name), i);
 	}
 
 	void OpenGLShaders::SetUnifromVector3(const char* name, const glm::vec3& vector)
 	{
-		AXIS_GL_ASSERT(glUniform3fv(GetUniformLocation(name), 1, glm::value_ptr(vector)));
+		glUniform3fv(GetUniformLocation(name), 1, glm::value_ptr(vector));
 	}
 
 	void OpenGLShaders::SetUnifromMatrix4(const char* name, const glm::mat4& matrix)
 	{
-		AXIS_GL_ASSERT(glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, glm::value_ptr(matrix)));
+		glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, glm::value_ptr(matrix));
 	}
 
 	void OpenGLShaders::bind() const
@@ -126,13 +130,13 @@ namespace Axis
 
 	void OpenGLShaders::unbind() const
 	{
-		AXIS_GL_ASSERT(glUseProgram(0));
+		glUseProgram(0);
 	}
 
 	OpenGLShaders::~OpenGLShaders()
 	{
-		AXIS_GL_ASSERT(glDeleteShader(m_vertexShader));
-		AXIS_GL_ASSERT(glDeleteShader(m_fragmentShader));
-		AXIS_GL_ASSERT(glDeleteShader(m_shaderProgram));
+		glDeleteShader(m_vertexShader);
+		glDeleteShader(m_fragmentShader);
+		glDeleteShader(m_shaderProgram);
 	}
 }

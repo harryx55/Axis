@@ -9,6 +9,6 @@ namespace Axis
 	{
 		static void Clear();
 		static void ClearColor(const glm::vec4& color);
-		static void DrawIndexed(OpenGLBufferObject& buffer);
+		static void DrawIndexed(OpenGLBufferObject* buffer);
 	};
 }

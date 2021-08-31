@@ -34,16 +34,12 @@ namespace Axis
 		static Application* s_Instance;
 		WindowsWindow* MainWindow;
 
-		ImguiLayer *m_imguiLayer = NULL;
+		ImguiLayer *m_imguiLayer;
 		LayerStack m_LayerStack;
 		bool running = true;
 
 	private:
-		OpenGLShaders* shader;
-		OpenGLBufferObject buffer;
-		OrthographicCamera camera;
-
-		Timestep timestep;
+		Axis::Timestep timestep;
 		float LastFrame = 0.0f;
 	};
 

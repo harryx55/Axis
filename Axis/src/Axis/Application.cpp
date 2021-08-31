@@ -10,57 +10,13 @@
 namespace Axis {
 
 	Application* Application::s_Instance = nullptr;
-	const char* vertexSrc = R"(
-			#version 140
-			in vec3 aPos;
-			in vec3 aColor;
-			
-			out vec3 color;
-			void main()
-			{
-				gl_Position = vec4(aPos, 1.0);
-				color = aColor;
-			})";
-
-	const char* fragmentSrc = R"(
-			#version 140
-			out vec4 fragColor;
-			in vec3 color;
-
-			void main()
-			{
-				fragColor = vec4(0.6, 0.5, 0.4, 1.0) * vec4(color, 1.0);
-			})";
-
 	Application::Application()
 	{
 		s_Instance = this;
-		AX_CORE_ASSERT(!s_Instance, "multiple instances of application not allowed");
+		AX_CORE_ASSERT(s_Instance, "multiple instances of application not allowed");
 		MainWindow = new WindowsWindow(props);
 
-		buffer.CreateVertexArray();
-		buffer.BindVertexArray();
-
-		float vertices[] =
-		{
-			-0.5f, -0.5f,	1.0f, 0.0f, 0.0f,
-			-0.5f,  0.5f,	0.0f, 1.0f, 0.0f,
-			 0.5f,  0.5f,	0.0f, 0.0f, 1.0f,
-			 0.5f, -0.5f,	0.0f, 1.0f, 0.0f
-		};
-		buffer.CreateVertexBuffer(20, vertices);
-
-		uint32_t indices[] =
-		{
-			0, 1, 2, 2, 3, 0
-		};
-		buffer.CreateIndexBuffer(6, indices);
-
-		buffer.AttachbufferLayout(0, 2, 5);
-		buffer.AttachbufferLayout(1, 3, 5);
-
-		shader = new OpenGLShaders(vertexSrc, fragmentSrc);
-		camera.InitCamera(-128, 128, -72, 72);
+		m_imguiLayer = new ImguiLayer();
 	}
 
 	Application::~Application()
@@ -75,21 +31,19 @@ namespace Axis {
 			float time = (float)glfwGetTime();
 			timestep = time - LastFrame;
 			LastFrame = time;
-			
-			RenderCommand::ClearColor({ 0.4f, 0.5f, 0.6f, 1.0f });
-			RenderCommand::Clear();
-			
-			Renderer::BeginScene(camera);
-
-			shader->bind();
-			Renderer::Submit(*shader, buffer);
 
 			for (ILayer* layer : m_LayerStack)
+			{
 				layer->OnUpdate(timestep);
+			}
 
+			/*****	To add fix		*****/
+			m_imguiLayer->OnAttach();
 			m_imguiLayer->Begin();
 			for (ILayer* layer : m_LayerStack)
+			{
 				layer->OnImguiRender();
+			}
 			m_imguiLayer->End();
 
 			MainWindow->onUpdate();

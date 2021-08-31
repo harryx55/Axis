@@ -51,7 +51,7 @@ namespace Axis
 
 	void ImguiLayer::OnUpdate(Timestep timestep)
 	{
-		AX_CORE_DEBUG_INFO("{0} ms", timestep.GetMilliSeconds());
+		// AX_CORE_DEBUG_INFO("{0} ms", timestep.GetMilliSeconds());
 	}
 
 	void ImguiLayer::OnDetach()

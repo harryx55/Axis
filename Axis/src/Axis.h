@@ -8,4 +8,10 @@
 
 #include <Axis/EntryPoint.h>
 
+#include "Axis/Renderer/Cameras.h"
 
+#include "Axis/Renderer/OpenGL/OpenGLBuffers.h"
+#include "Axis/Renderer/OpenGL/OpenGLShaders.h"
+
+#include "Axis/Renderer/RenderCommand.h"
+#include "Axis/Renderer/Renderer.h"

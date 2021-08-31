@@ -10,7 +10,7 @@ namespace Axis
 	struct Renderer
 	{
 		static void BeginScene(OrthographicCamera& camera);
-		static void Submit(OpenGLShaders& shader, OpenGLBufferObject& buffer);
+		static void Submit(OpenGLShaders* shader, OpenGLBufferObject* buffer);
 		static void EndScene();
 
 		struct SceneData
