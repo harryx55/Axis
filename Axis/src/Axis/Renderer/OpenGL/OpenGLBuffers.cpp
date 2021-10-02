@@ -1,53 +1,52 @@
 #include "pch.h"
 #include "OpenGLBuffers.h"
-#include "OpenGLErrors.h"
 
 
 namespace Axis
 {
-	GLuint OpenGLBufferObject::offset;
-	void OpenGLBufferObject::CreateVertexArray()
+	void OpenGLVertexBuffer::AttachBuffer(float *data, GLuint count)
 	{
-		glGenVertexArrays(1, &vao);
+		AXIS_GL_ASSERT(glGenBuffers(1, &vbo));
+		AXIS_GL_ASSERT(glBindBuffer(GL_ARRAY_BUFFER, vbo));
+		AXIS_GL_ASSERT(glBufferData(GL_ARRAY_BUFFER, sizeof(float) * count, data, GL_STATIC_DRAW));
 	}
 
-	void OpenGLBufferObject::BindVertexArray()
-	{
-		glBindVertexArray(vao);
-	}
-
-	void OpenGLBufferObject::CreateVertexBuffer(GLuint count, void* data)
-	{
-		glGenBuffers(1, &vbo);
-		glBindBuffer(GL_ARRAY_BUFFER, vbo);
-		AXIS_GL_ASSERT(glBufferData(GL_ARRAY_BUFFER, count * sizeof(GL_FLOAT), data, GL_STATIC_DRAW));
-	}
-
-	void OpenGLBufferObject::BindVertexBuffer()
+	void OpenGLVertexBuffer::Bind() const
 	{
 		AXIS_GL_ASSERT(glBindBuffer(GL_ARRAY_BUFFER, vbo));
 	}
 
-	void OpenGLBufferObject::CreateIndexBuffer(GLuint count, void* data)
+	void OpenGLVertexBuffer::UnBind() const
 	{
-		indexCount = count;
-
-		glGenBuffers(1, &ibo);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
-		AXIS_GL_ASSERT(glBufferData(GL_ELEMENT_ARRAY_BUFFER, count * sizeof(GLuint), data, GL_STATIC_DRAW));
+		AXIS_GL_ASSERT(glBindBuffer(GL_ARRAY_BUFFER, 0));
 	}
 
-	void OpenGLBufferObject::BindIndexBuffer()
+	void OpenGLVertexBuffer::DeleteBuffer() const
 	{
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+		glDeleteBuffers(1, &vbo);
+	}
+	
+	void OpenGLIndexBuffer::AttachBuffer(GLuint *data, GLuint _count)
+	{
+		count = _count;
+
+		AXIS_GL_ASSERT(glGenBuffers(1, &ibo));
+		AXIS_GL_ASSERT(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo));
+		AXIS_GL_ASSERT(glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * _count, data, GL_STATIC_DRAW));
 	}
 
-	void OpenGLBufferObject::AttachbufferLayout(GLuint index, GLuint size, GLuint stride)
+	void OpenGLIndexBuffer::Bind() const
 	{
-		AXIS_GL_ASSERT(glEnableVertexAttribArray(index));
-		AXIS_GL_ASSERT(glVertexAttribPointer(index, size, GL_FLOAT, GL_FALSE, stride * sizeof(GL_FLOAT),
-			(void*)(offset * sizeof(GL_FLOAT))));
+		AXIS_GL_ASSERT(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo));
+	}
+	
+	void OpenGLIndexBuffer::UnBind() const
+	{
+		AXIS_GL_ASSERT(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
+	}
 
-		offset += size;
+	void OpenGLIndexBuffer::DeleteBuffer() const
+	{
+		glDeleteBuffers(1, &ibo);
 	}
 }

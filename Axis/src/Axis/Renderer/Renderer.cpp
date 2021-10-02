@@ -12,7 +12,7 @@ namespace Axis
 	}
 
 
-	void Renderer::Submit(OpenGLShaders* shader, OpenGLBufferObject* buffer)
+	void Renderer::Submit(OpenGLShaders* shader, OpenGLIndexBuffer buffer)
 	{
 		shader->bind();
 		// shader.SetUnifromMatrix4("viewProjection", m_sceneData->viewProjectionMatrix);

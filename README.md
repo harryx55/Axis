@@ -20,14 +20,6 @@ run `Generate-visual-studio-solution-files.bat` to generate solution files.
 * [spdlog](https://github.com/gabime/spdlog)
 * [premake](https://github.com/premake/premake-core)
 
-## Features To be added
-- Linux support
-- 2D and 3D rendering
-- 2D and 3D physics engine
-- Audio
-- Editor
-
-
 
 
 

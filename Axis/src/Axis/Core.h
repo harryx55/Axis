@@ -12,12 +12,17 @@
 		#define AXIS_API
 	#endif
 #else
-	#error Axis does not support current platform
+	#error Axis is only supported on windows
 #endif
 
-#ifdef AXIS_ENABLE_ASSERT && AX_DEBUG
-	#define AX_ASSERT(x, ...) { if((!x)) { AX_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
-	#define AX_CORE_ASSERT(x, ...) { if((!x)) { AX_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#ifdef AXIS_ENABLE_ASSERT
+	#ifdef AX_DEBUG
+		#define AX_ASSERT(x, ...) { if((!x)) { AX_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+		#define AX_CORE_ASSERT(x, ...) { if((!x)) { AX_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#else
+		#define AX_ASSERT(x, ...)
+		#define AX_CORE_ASSERT(x, ...)
+	#endif
 #else
 	#define AX_ASSERT(x, ...)
 	#define AX_CORE_ASSERT(x, ...)

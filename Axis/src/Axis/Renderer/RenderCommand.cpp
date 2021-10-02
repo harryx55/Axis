@@ -1,25 +1,28 @@
 #include "pch.h"
 #include "RenderCommand.h"
 
-#include <glad/glad.h>
-#include "OpenGL/OpenGLErrors.h"
-
 namespace Axis
 {
-	void RenderCommand::Clear()
+	void RenderCommand::Clear(const glm::vec4& color, GLenum colorBuffer, GLenum depthBuffer, GLenum stencilBuffer, GLint stencilLevel)
 	{
+		GLenum mask = colorBuffer;
 		
-		AXIS_GL_ASSERT(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
+		if (depthBuffer) {
+			mask |= GL_DEPTH_BUFFER_BIT;
+		}
+
+		if (stencilBuffer) {
+			mask |= GL_STENCIL_BUFFER_BIT;
+			glClearStencil(stencilLevel);
+		}
+
+		glClearColor(color.r, color.g, color.b, color.a);
+		AXIS_GL_ASSERT(glClear(mask));
 	}
 
-	void RenderCommand::ClearColor(const glm::vec4& color)
+	void RenderCommand::DrawIndexed(OpenGLIndexBuffer buffer)
 	{
-		AXIS_GL_ASSERT(glClearColor(color.r, color.g, color.b, color.a));
-	}
-
-	void RenderCommand::DrawIndexed(OpenGLBufferObject* buffer)
-	{
-		buffer->BindVertexArray();
-		AXIS_GL_ASSERT(glDrawElements(GL_TRIANGLES, buffer->indexCount, GL_UNSIGNED_INT, nullptr));
+		buffer.Bind();
+		AXIS_GL_ASSERT(glDrawElements(GL_TRIANGLES, buffer.GetCount(), GL_UNSIGNED_INT, nullptr));
 	}
 }

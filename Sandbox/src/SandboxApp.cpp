@@ -8,10 +8,7 @@ public:
 	ExampleLayer()
 		: ILayer("Example")
 	{
-		buffer = new Axis::OpenGLBufferObject();
-
-		buffer->CreateVertexArray();
-		buffer->BindVertexArray();
+		vertexArray.CreateVertexArray();
 
 		float vertices[] =
 		{
@@ -20,16 +17,16 @@ public:
 			 0.5f,  0.5f,	0.0f, 0.0f, 1.0f,
 			 0.5f, -0.5f,	0.0f, 1.0f, 0.0f
 		};
-		buffer->CreateVertexBuffer(20, vertices);
+		vertexBuffer.AttachBuffer(vertices, 20);
 
 		uint32_t indices[] =
 		{
 			0, 1, 2, 2, 3, 0
 		};
-		buffer->CreateIndexBuffer(6, indices);
+		indexBuffer.AttachBuffer(indices, 6);
 
-		buffer->AttachbufferLayout(0, 2, 5);
-		buffer->AttachbufferLayout(1, 3, 5);
+		vertexArray.AttachAttribs( {0, 2, 5, 0} );
+		vertexArray.AttachAttribs( {1, 3, 5, 2} );
 
 		const char* vertexSrc = R"(
 			#version 140
@@ -63,14 +60,14 @@ public:
 
 	void OnUpdate(Axis::Timestep timestep) override
 	{
-		Axis::RenderCommand::ClearColor({ 0.4f, 0.5f, 0.6f, 1.0f });
-		Axis::RenderCommand::Clear();
+		vertexArray.Bind();
 
+		Axis::RenderCommand::Clear({ 0.4f, 0.5f, 0.6f, 1.0f }, Axis::BUFFER_BIT::COLOR_BUFFER_BIT);
 		Axis::Renderer::BeginScene(camera);
 
 		shader->bind();
 
-		Axis::Renderer::Submit(shader, buffer);
+		Axis::Renderer::Submit(shader, indexBuffer);
 		AX_DEBUG_INFO("{0} ms", timestep.GetMilliSeconds());
 	}
 
@@ -80,6 +77,7 @@ public:
 
 	void OnImguiRender() override
 	{
+		//Axis::ImguiLayer::
 	}
 
 	void OnDetach() override
@@ -87,8 +85,11 @@ public:
 	}
 
 private:
+	Axis::OpenGLVertexArray vertexArray;
+	Axis::OpenGLVertexBuffer vertexBuffer;
+	Axis::OpenGLIndexBuffer indexBuffer;
+	
 	Axis::OpenGLShaders* shader;
-	Axis::OpenGLBufferObject* buffer;
 	Axis::OrthographicCamera camera;
 };
 

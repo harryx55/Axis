@@ -1,12 +1,10 @@
 #pragma once
 #include "glm/glm.hpp"
-#include <glad/glad.h>
+#include "OpenGL.h"
 
 namespace Axis
 {
-	class OpenGLShaders
-	{
-	public:
+	struct OpenGLShaders {
 		OpenGLShaders(const char*, const char*);
 		virtual ~OpenGLShaders();
 
@@ -22,8 +20,8 @@ namespace Axis
 		GLuint m_vertexShader;
 		GLuint m_fragmentShader;
 
-	private:
 		int GetUniformLocation(const char* name);
-		const char* ReadShaderSource(const char*);
 	};
 }
+
+

@@ -6,9 +6,6 @@
 #include "Axis/Imgui/ImguiLayer.h"
 
 #include "Platform/windows/WindowsInput.h"
-#include "Renderer/OpenGL/OpenGLShaders.h"
-#include "Renderer/OpenGL/OpenGLBuffers.h"
-
 #include "Renderer/Cameras.h"
 
 #include "Axis/Core/Timestep.h"

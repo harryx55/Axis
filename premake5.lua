@@ -46,6 +46,7 @@ project "Axis"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/src/Axis",
+		"%{prj.name}/src/Axis/Core",
 		"%{prj.name}/vendor/spdlog/include",
 
 		"%{prj.name}/vendor/Glad/include",

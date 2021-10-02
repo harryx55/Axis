@@ -2,8 +2,6 @@
 #include <Axis/Application.h>
 #include <glad/glad.h>
 
-#include "Renderer/OpenGL/OpenGLErrors.h"
-
 #include "Renderer/Renderer.h"
 #include "Renderer/RenderCommand.h"
 
@@ -17,6 +15,7 @@ namespace Axis {
 		MainWindow = new WindowsWindow(props);
 
 		m_imguiLayer = new ImguiLayer();
+		m_imguiLayer->OnAttach();
 	}
 
 	Application::~Application()
@@ -37,15 +36,15 @@ namespace Axis {
 				layer->OnUpdate(timestep);
 			}
 
-			/*****	To add fix		*****/
-			m_imguiLayer->OnAttach();
 			m_imguiLayer->Begin();
 			for (ILayer* layer : m_LayerStack)
 			{
+				m_imguiLayer->OnAttach();
+				m_imguiLayer->OnImguiRender();
 				layer->OnImguiRender();
 			}
-			m_imguiLayer->End();
 
+			m_imguiLayer->End();
 			MainWindow->onUpdate();
 		}
 	}

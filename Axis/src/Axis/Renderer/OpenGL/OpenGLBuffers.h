@@ -1,27 +1,30 @@
 #pragma once
-#include <glad/glad.h>
-
+#include "OpenGL.h"
 
 namespace Axis
 {
-	struct OpenGLBufferObject
+	struct OpenGLVertexBuffer
 	{
-		void CreateVertexArray();
-		void BindVertexArray();
-		void CreateVertexBuffer(GLuint count, void* data);
-		void BindVertexBuffer();
-		void CreateIndexBuffer(GLuint count, void* data);
-		void BindIndexBuffer();
+		void AttachBuffer(float*, GLuint count);
+		void Bind() const;
+		void UnBind() const;
+		void DeleteBuffer() const;
 
-		void AttachbufferLayout(GLuint index, GLuint size, GLuint stride);
-
-		GLuint indexCount;
-	
 	private:
-		GLuint vao;
 		GLuint vbo;
-		GLuint ibo;
+	};
 
-		static GLuint offset;
+	struct OpenGLIndexBuffer
+	{
+		void AttachBuffer(GLuint*, GLuint _count);
+		void Bind() const;
+		void UnBind() const;
+		void DeleteBuffer() const;
+		
+		GLsizei GetCount() const { return count; }
+
+	private:
+		GLuint ibo;
+		GLsizei count;
 	};
 }
