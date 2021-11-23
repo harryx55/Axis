@@ -68,7 +68,7 @@ public:
 		shader->bind();
 
 		Axis::Renderer::Submit(shader, indexBuffer);
-		AX_DEBUG_INFO("{0} ms", timestep.GetMilliSeconds());
+		// AX_DEBUG_INFO("{0} ms", timestep.GetMilliSeconds());
 	}
 
 	void OnRender() override

@@ -12,7 +12,7 @@ namespace Axis {
 	{
 		s_Instance = this;
 		AX_CORE_ASSERT(s_Instance, "multiple instances of application not allowed");
-		MainWindow = new WindowsWindow(props);
+		MainWindow = new glfwWindow(1280, 720, "Axis Engine");
 
 		m_imguiLayer = new ImguiLayer();
 		m_imguiLayer->OnAttach();
@@ -27,9 +27,8 @@ namespace Axis {
 	{
 		while (!glfwWindowShouldClose(MainWindow->GetWindow()))
 		{
-			float time = (float)glfwGetTime();
-			timestep = time - LastFrame;
-			LastFrame = time;
+			MainWindow->calculateDeltaTime();
+			AX_CORE_INFO("{0}{1}", MainWindow->GetFPS(), " FPS");
 
 			for (ILayer* layer : m_LayerStack)
 			{

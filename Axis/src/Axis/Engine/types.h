@@ -1,12 +1,13 @@
 
+namespace Axis {
+	typedef char      int8;
+	typedef short     int16;
+	typedef int       int32;
+	typedef long long int64;
 
-typedef int8  char;
-typedef int16 short;
-typedef int32 int;
-typedef int64 long long;
+	typedef unsigned char      uint8;
+	typedef unsigned short     uint16;
+	typedef unsigned int       uint32;
+	typedef unsigned long long uint64;
 
-typedef uint8  unsigned char;
-typedef uint16 unsigned short;
-typedef uint32 unsigned int;
-typedef uint64 unsigned long long;
-
+}

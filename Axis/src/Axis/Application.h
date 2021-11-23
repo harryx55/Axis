@@ -2,7 +2,7 @@
 
 #include "Core.h"
 #include "LayerStack.h"
-#include "platform/windows/WindowsWindow.h"
+#include "platform/windows/glfwMain.h"
 #include "Axis/Imgui/ImguiLayer.h"
 
 #include "Platform/windows/WindowsInput.h"
@@ -20,16 +20,15 @@ namespace Axis
 
 	public:
 		static Application& Get() { return *s_Instance; }
-		WindowsWindow& GetWindow() { return *MainWindow; }
+		glfwWindow& GetWindow() { return *MainWindow; }
 		void Run();
 
 		void PushLayer(ILayer* layer);
 		void PushOverlay(ILayer* layer);
 
 	private:
-		WindowProps props { "Axis Engine", 1280, 720 };
 		static Application* s_Instance;
-		WindowsWindow* MainWindow;
+		glfwWindow* MainWindow;
 
 		ImguiLayer *m_imguiLayer;
 		LayerStack m_LayerStack;

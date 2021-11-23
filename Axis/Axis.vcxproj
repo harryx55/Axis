@@ -138,6 +138,7 @@
     <ClInclude Include="src\Axis\Application.h" />
     <ClInclude Include="src\Axis\Core.h" />
     <ClInclude Include="src\Axis\Core\Timestep.h" />
+    <ClInclude Include="src\Axis\Engine\types.h" />
     <ClInclude Include="src\Axis\EntryPoint.h" />
     <ClInclude Include="src\Axis\Imgui\ImguiLayer.h" />
     <ClInclude Include="src\Axis\Input.h" />
@@ -151,10 +152,9 @@
     <ClInclude Include="src\Axis\Renderer\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Axis\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Axis\Renderer\Renderer.h" />
-    <ClInclude Include="src\Axis\Window.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\platform\windows\WindowsInput.h" />
-    <ClInclude Include="src\platform\windows\WindowsWindow.h" />
+    <ClInclude Include="src\platform\windows\glfwMain.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Axis\Application.cpp" />
@@ -173,7 +173,7 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\platform\windows\WindowsInput.cpp" />
-    <ClCompile Include="src\platform\windows\WindowsWindow.cpp" />
+    <ClCompile Include="src\platform\windows\glfwMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

@@ -49,14 +49,11 @@
     <ClInclude Include="src\Axis\Renderer\OpenGL\OpenGLShaders.h">
       <Filter>Axis\Renderer\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="src\Axis\Window.h">
-      <Filter>Axis</Filter>
-    </ClInclude>
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\platform\windows\WindowsInput.h">
       <Filter>platform\windows</Filter>
     </ClInclude>
-    <ClInclude Include="src\platform\windows\WindowsWindow.h">
+    <ClInclude Include="src\platform\windows\glfwMain.h">
       <Filter>platform\windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Axis\Renderer\RenderCommand.h" />
@@ -68,6 +65,7 @@
     </ClInclude>
     <ClInclude Include="src\Axis\Renderer\OpenGL\OpenGL.h" />
     <ClInclude Include="src\Axis\Renderer\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="src\Axis\Engine\types.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Axis\Application.cpp">
@@ -95,7 +93,7 @@
     <ClCompile Include="src\platform\windows\WindowsInput.cpp">
       <Filter>platform\windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\platform\windows\WindowsWindow.cpp">
+    <ClCompile Include="src\platform\windows\glfwMain.cpp">
       <Filter>platform\windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Axis\Renderer\RenderCommand.cpp" />
