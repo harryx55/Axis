@@ -32,7 +32,7 @@ namespace Axis {
 
 			for (ILayer* layer : m_LayerStack)
 			{
-				layer->OnUpdate(timestep);
+				layer->OnUpdate(MainWindow->GetSeconds());
 			}
 
 			m_imguiLayer->Begin();

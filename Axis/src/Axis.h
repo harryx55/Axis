@@ -4,8 +4,6 @@
 #include "Axis/Log.h"
 #include "Imgui/ImguiLayer.h"
 
-#include "Axis/Core/Timestep.h"
-
 #include <Axis/EntryPoint.h>
 
 #include "Axis/Renderer/Cameras.h"

@@ -58,7 +58,7 @@ public:
 	{
 	}
 
-	void OnUpdate(Axis::Timestep timestep) override
+	void OnUpdate(float timestep) override
 	{
 		vertexArray.Bind();
 

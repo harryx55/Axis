@@ -137,8 +137,6 @@
     <ClInclude Include="src\Axis.h" />
     <ClInclude Include="src\Axis\Application.h" />
     <ClInclude Include="src\Axis\Core.h" />
-    <ClInclude Include="src\Axis\Core\Timestep.h" />
-    <ClInclude Include="src\Axis\Engine\types.h" />
     <ClInclude Include="src\Axis\EntryPoint.h" />
     <ClInclude Include="src\Axis\Imgui\ImguiLayer.h" />
     <ClInclude Include="src\Axis\Input.h" />
