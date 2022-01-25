@@ -2,7 +2,8 @@
 
 #include "Core.h"
 #include "LayerStack.h"
-#include "platform/windows/glfwMain.h"
+#include "Renderer/OpenGL/GLADGL.h"
+#include "platform/windows/glfw.h"
 #include "Axis/Imgui/ImguiLayer.h"
 
 #include "Platform/windows/WindowsInput.h"

@@ -1,6 +1,5 @@
 #include "pch.h"
 #include <Axis/Application.h>
-#include <glad/glad.h>
 
 #include "Renderer/Renderer.h"
 #include "Renderer/RenderCommand.h"
@@ -32,7 +31,7 @@ namespace Axis {
 
 			for (ILayer* layer : m_LayerStack)
 			{
-				layer->OnUpdate(MainWindow->GetSeconds());
+				layer->OnUpdate(MainWindow->GetElapsedTime());
 			}
 
 			m_imguiLayer->Begin();

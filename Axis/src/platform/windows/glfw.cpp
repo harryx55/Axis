@@ -1,11 +1,9 @@
 #include "pch.h"
-#include "glfwMain.h"
+#include "glfw.h"
 
-#include "glad/glad.h"
 
-namespace Axis
-{
-	glfwWindow::glfwWindow(uint32_t width, uint32_t height, const char* title)
+namespace Axis {
+  glfwWindow::glfwWindow(uint32_t width, uint32_t height, const char* title, bool fullscreen, bool vsync)
 		: m_window(NULL), m_width(width), m_height(height), m_title(title), m_vSync(true) {
 		m_title = title;
 		m_width = width;
@@ -19,18 +17,19 @@ namespace Axis
 		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
 		
 		m_window = glfwCreateWindow(width, height, title, NULL, NULL);
-		AX_CORE_ASSERT(m_window, "[ERROR]: window not created");
+		AX_CORE_ASSERT(m_window, "[ERROR]: GLFW window failed.");
 
 		glfwMakeContextCurrent(m_window);
-		glfwSetWindowSizeCallback(m_window, [](GLFWwindow* w, int width, int height)
-			{
-				glViewport(0, 0, width, height);
-			});
+		glfwSetWindowSizeCallback(m_window, [](GLFWwindow* w, int width, int height) {
+		    glViewport(0, 0, width, height);
+		});
 
 		int gladStatus = gladLoadGL();
 		AX_CORE_ASSERT(gladStatus, "[ERROR]: GLAD not Initialized");
 
-		SetVSync(true);
+		if(vsync) {
+		      SetVSync(true);
+		}
 	}
 
 	glfwWindow::~glfwWindow() {

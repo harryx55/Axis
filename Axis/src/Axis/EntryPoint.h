@@ -1,5 +1,4 @@
 #pragma once
-
 #ifdef AXIS_PLATFORM_WINDOWS
 
 

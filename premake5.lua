@@ -11,19 +11,19 @@ workspace "Axis"
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
-IncludeDir ["GLFW"] = "Axis/vendor/GLFW/include"
-IncludeDir ["Glad"] = "Axis/vendor/GLAD/include"
+-- IncludeDir ["GLFW"] = "Axis/vendor/GLFW/include"
+-- IncludeDir ["Glad"] = "Axis/vendor/GLAD/include"
 IncludeDir ["ImGui"] = "Axis/vendor/ImGui"
 
-include "Axis/vendor/GLFW"
-include "Axis/vendor/Glad"
+-- include "Axis/vendor/GLFW"
+-- include "Axis/vendor/Glad"
 include "Axis/vendor/ImGui"
 
 project "Axis"
 	location "Axis"
 	kind "Staticlib"
 	language "c++"
-	cppdialect "c++17"
+	cppdialect "c++20"
 	staticruntime "On"
 
 	pchheader "pch.h"
@@ -39,9 +39,39 @@ project "Axis"
 		"%{prj.name}/src/Axis/**.h",
 		"%{prj.name}/src/Axis/**.hpp",
 		"%{prj.name}/src/Axis/**.c",
-		"%{prj.name}/src/Axis/**.cpp"
+		"%{prj.name}/src/Axis/**.cpp",
+
+		"%{prj.name}/vendor/Glad/src/glad.c",
+
+		-- GLFW
+		"%{prj.name}/vendor/Glfw/src/context.c",
+		"%{prj.name}/vendor/Glfw/src/egl_context.c",
+		"%{prj.name}/vendor/Glfw/src/init.c",
+		"%{prj.name}/vendor/Glfw/src/input.c",
+		"%{prj.name}/vendor/Glfw/src/osmesa_context.c",
+		"%{prj.name}/vendor/Glfw/src/vulkan.c",
+		"%{prj.name}/vendor/Glfw/src/wgl_context.c",
+		"%{prj.name}/vendor/Glfw/src/win32_init.c",
+		"%{prj.name}/vendor/Glfw/src/win32_joystick.c",
+		"%{prj.name}/vendor/Glfw/src/win32_monitor.c",
+		"%{prj.name}/vendor/Glfw/src/win32_thread.c",
+		"%{prj.name}/vendor/Glfw/src/win32_time.c",
+		"%{prj.name}/vendor/Glfw/src/win32_window.c",
+		"%{prj.name}/vendor/Glfw/src/window.c"
 	}
 
+	filter "%{prj.name}/vendor/Glad/src/**.c"
+	flags
+	{
+	   "NoPCH"
+	}
+
+	filter "%{prj.name}/vendor/Glfw/src/**.c"
+	flags
+	{
+	   "NoPCH"
+	}
+	
 	includedirs
 	{
 		"%{prj.name}/src",
@@ -51,7 +81,7 @@ project "Axis"
 
 		"%{prj.name}/vendor/Glad/include",
 		"%{prj.name}/vendor/ImGui",
-		"%{prj.name}/vendor/GLFW/include",
+		"%{prj.name}/vendor/Glfw/include",
 
 		"%{prj.name}/vendor/glm"
 
@@ -59,8 +89,6 @@ project "Axis"
 
 	links 
 	{
-		"GLFW",
-		"Glad",
 		"ImGui",
 		"opengl32.lib"
 	}
@@ -72,10 +100,10 @@ project "Axis"
 		{
 			"AXIS_BUILD_DLL",
 			"AXIS_PLATFORM_WINDOWS",
-			"GLFW_INCLUDE_NONE",
 			"AXIS_ENABLE_ASSERT",
 			"_CRT_SECURE_NO_WARNINGS",
-			"_WINDLL"
+			"_WINDLL",
+			"_GLFW_WIN32"
 		}
 
 		filter "configurations:Debug"

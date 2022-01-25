@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "ImguiLayer.h"
+#include "Renderer/OpenGL/GLADGL.h"
 
 #include "imgui.h"
 
@@ -8,7 +9,6 @@
 
 #include "GLFW/glfw3.h"
 #include "Application.h"
-#include "glad/glad.h"
 
 #include "Log.h"
 namespace Axis

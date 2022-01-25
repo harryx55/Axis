@@ -1,5 +1,5 @@
 #pragma once
-#include <glad/glad.h>
+#include "Renderer/OpenGL/GLADGL.h"
 
 const char* GL_returnErrorMessage(GLuint error);
 bool GlLogCall(const GLchar* function, const GLchar* file, GLuint line);

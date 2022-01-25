@@ -1,20 +1,21 @@
 #pragma once
+#include "Renderer/OpenGL/GLADGL.h"
 #include "GLFW/glfw3.h"
 
 namespace Axis
 {
 	class glfwWindow {
 	public:
-		glfwWindow(uint32_t width, uint32_t height, const char* title);
+	     glfwWindow(uint32_t width, uint32_t height, const char* title, bool fullscreen = false, bool vsync = false);
 		~glfwWindow();
 
 		void onUpdate();
 		void SetVSync(bool enabled);
 
-	        void calculateDeltaTime();
-	        float GetFPS();
-	        float GetSeconds() { return m_deltaTime; }
-	        float GetMilliseconds() { return m_deltaTime * 1000; }
+		void calculateDeltaTime();
+		float GetFPS();
+		float GetElapsedTime() { return m_deltaTime; }
+		float GetMilliseconds() { return m_deltaTime * 1000; }
 	  
 		GLFWwindow* GetWindow()		const { return m_window; }
 		unsigned int GetWidth()		const { return m_width;	 }
